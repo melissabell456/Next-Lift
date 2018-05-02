@@ -4,7 +4,7 @@ module.exports = (sequelize, DataTypes) => {
     lift_id: DataTypes.INTEGER,
     muscle_id: DataTypes.INTEGER,
     primary: DataTypes.BOOLEAN
-  }, {});
+  }, { tableName: lift_muscle, timestamps: false });
   Lift_Muscle.associate = function(models) {
     // associations can be defined here
   };
