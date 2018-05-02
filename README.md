@@ -11,3 +11,4 @@
 ## Why tr-obot?
 
 #### Many apps and websites suggest workouts/rep-ranges/weight based on what the 'average' person can do. What is average? Who defined that and how does it apply to an individual? These recommendations can cause injuries (if the suggested rep-range/weight is too much for the user) or a lack of progress(if the suggested rep-range/weight is too low for the user) which ultimately leads to feelings of discourgement and inadequacy. Because tr-obot only suggests workouts based on the current user, these custom work out plans will ensure progress and help to avoid injuries.
+
