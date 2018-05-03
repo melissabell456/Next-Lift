@@ -1,0 +1,662 @@
+[
+  {
+    "lift_id": 1,
+    "muscle_id": 1,
+    "primary": "FALSE"
+  },
+  {
+    "lift_id": 1,
+    "muscle_id": 2,
+    "primary": "TRUE"
+  },
+  {
+    "lift_id": 1,
+    "muscle_id": 3,
+    "primary": "FALSE"
+  },
+  {
+    "lift_id": 1,
+    "muscle_id": 4,
+    "primary": "FALSE"
+  },
+  {
+    "lift_id": 1,
+    "muscle_id": 5,
+    "primary": "FALSE"
+  },
+  {
+    "lift_id": 1,
+    "muscle_id": 6,
+    "primary": "FALSE"
+  },
+  {
+    "lift_id": 1,
+    "muscle_id": 7,
+    "primary": "FALSE"
+  },
+  {
+    "lift_id": 1,
+    "muscle_id": 8,
+    "primary": "FALSE"
+  },
+  {
+    "lift_id": 1,
+    "muscle_id": 9,
+    "primary": "FALSE"
+  },
+  {
+    "lift_id": 1,
+    "muscle_id": 10,
+    "primary": "FALSE"
+  },
+  {
+    "lift_id": 2,
+    "muscle_id": 1,
+    "primary": "FALSE"
+  },
+  {
+    "lift_id": 2,
+    "muscle_id": 2,
+    "primary": "FALSE"
+  },
+  {
+    "lift_id": 2,
+    "muscle_id": 3,
+    "primary": "TRUE"
+  },
+  {
+    "lift_id": 2,
+    "muscle_id": 4,
+    "primary": "FALSE"
+  },
+  {
+    "lift_id": 2,
+    "muscle_id": 5,
+    "primary": "FALSE"
+  },
+  {
+    "lift_id": 2,
+    "muscle_id": 6,
+    "primary": "FALSE"
+  },
+  {
+    "lift_id": 2,
+    "muscle_id": 7,
+    "primary": "FALSE"
+  },
+  {
+    "lift_id": 3,
+    "muscle_id": 1,
+    "primary": "FALSE"
+  },
+  {
+    "lift_id": 3,
+    "muscle_id": 3,
+    "primary": "FALSE"
+  },
+  {
+    "lift_id": 3,
+    "muscle_id": 4,
+    "primary": "FALSE"
+  },
+  {
+    "lift_id": 3,
+    "muscle_id": 5,
+    "primary": "FALSE"
+  },
+  {
+    "lift_id": 3,
+    "muscle_id": 6,
+    "primary": "TRUE"
+  },
+  {
+    "lift_id": 4,
+    "muscle_id": 3,
+    "primary": "FALSE"
+  },
+  {
+    "lift_id": 4,
+    "muscle_id": 4,
+    "primary": "FALSE"
+  },
+  {
+    "lift_id": 4,
+    "muscle_id": 5,
+    "primary": "FALSE"
+  },
+  {
+    "lift_id": 4,
+    "muscle_id": 6,
+    "primary": "TRUE"
+  },
+  {
+    "lift_id": 4,
+    "muscle_id": 7,
+    "primary": "FALSE"
+  },
+  {
+    "lift_id": 5,
+    "muscle_id": 3,
+    "primary": "FALSE"
+  },
+  {
+    "lift_id": 5,
+    "muscle_id": 4,
+    "primary": "FALSE"
+  },
+  {
+    "lift_id": 5,
+    "muscle_id": 5,
+    "primary": "FALSE"
+  },
+  {
+    "lift_id": 5,
+    "muscle_id": 6,
+    "primary": "FALSE"
+  },
+  {
+    "lift_id": 5,
+    "muscle_id": 7,
+    "primary": "TRUE"
+  },
+  {
+    "lift_id": 6,
+    "muscle_id": 1,
+    "primary": "FALSE"
+  },
+  {
+    "lift_id": 6,
+    "muscle_id": 2,
+    "primary": "TRUE"
+  },
+  {
+    "lift_id": 6,
+    "muscle_id": 3,
+    "primary": "FALSE"
+  },
+  {
+    "lift_id": 6,
+    "muscle_id": 4,
+    "primary": "FALSE"
+  },
+  {
+    "lift_id": 6,
+    "muscle_id": 5,
+    "primary": "FALSE"
+  },
+  {
+    "lift_id": 6,
+    "muscle_id": 6,
+    "primary": "FALSE"
+  },
+  {
+    "lift_id": 7,
+    "muscle_id": 3,
+    "primary": "FALSE"
+  },
+  {
+    "lift_id": 7,
+    "muscle_id": 4,
+    "primary": "FALSE"
+  },
+  {
+    "lift_id": 7,
+    "muscle_id": 5,
+    "primary": "FALSE"
+  },
+  {
+    "lift_id": 7,
+    "muscle_id": 6,
+    "primary": "TRUE"
+  },
+  {
+    "lift_id": 8,
+    "muscle_id": 1,
+    "primary": "FALSE"
+  },
+  {
+    "lift_id": 8,
+    "muscle_id": 2,
+    "primary": "TRUE"
+  },
+  {
+    "lift_id": 8,
+    "muscle_id": 3,
+    "primary": "FALSE"
+  },
+  {
+    "lift_id": 8,
+    "muscle_id": 4,
+    "primary": "FALSE"
+  },
+  {
+    "lift_id": 8,
+    "muscle_id": 5,
+    "primary": "FALSE"
+  },
+  {
+    "lift_id": 8,
+    "muscle_id": 6,
+    "primary": "FALSE"
+  },
+  {
+    "lift_id": 9,
+    "muscle_id": 11,
+    "primary": "TRUE"
+  },
+  {
+    "lift_id": 9,
+    "muscle_id": 12,
+    "primary": "FALSE"
+  },
+  {
+    "lift_id": 9,
+    "muscle_id": 13,
+    "primary": "FALSE"
+  },
+  {
+    "lift_id": 9,
+    "muscle_id": 15,
+    "primary": "FALSE"
+  },
+  {
+    "lift_id": 9,
+    "muscle_id": 17,
+    "primary": "FALSE"
+  },
+  {
+    "lift_id": 10,
+    "muscle_id": 11,
+    "primary": "FALSE"
+  },
+  {
+    "lift_id": 10,
+    "muscle_id": 12,
+    "primary": "FALSE"
+  },
+  {
+    "lift_id": 10,
+    "muscle_id": 13,
+    "primary": "FALSE"
+  },
+  {
+    "lift_id": 10,
+    "muscle_id": 17,
+    "primary": "TRUE"
+  },
+  {
+    "lift_id": 11,
+    "muscle_id": 10,
+    "primary": "FALSE"
+  },
+  {
+    "lift_id": 11,
+    "muscle_id": 11,
+    "primary": "FALSE"
+  },
+  {
+    "lift_id": 11,
+    "muscle_id": 12,
+    "primary": "FALSE"
+  },
+  {
+    "lift_id": 11,
+    "muscle_id": 13,
+    "primary": "FALSE"
+  },
+  {
+    "lift_id": 11,
+    "muscle_id": 14,
+    "primary": "FALSE"
+  },
+  {
+    "lift_id": 11,
+    "muscle_id": 17,
+    "primary": "TRUE"
+  },
+  {
+    "lift_id": 12,
+    "muscle_id": 17,
+    "primary": "FALSE"
+  },
+  {
+    "lift_id": 12,
+    "muscle_id": 13,
+    "primary": "FALSE"
+  },
+  {
+    "lift_id": 12,
+    "muscle_id": 11,
+    "primary": "TRUE"
+  },
+  {
+    "lift_id": 13,
+    "muscle_id": 10,
+    "primary": "FALSE"
+  },
+  {
+    "lift_id": 13,
+    "muscle_id": 12,
+    "primary": "TRUE"
+  },
+  {
+    "lift_id": 13,
+    "muscle_id": 13,
+    "primary": "FALSE"
+  },
+  {
+    "lift_id": 13,
+    "muscle_id": 17,
+    "primary": "FALSE"
+  },
+  {
+    "lift_id": 14,
+    "muscle_id": 14,
+    "primary": "TRUE"
+  },
+  {
+    "lift_id": 15,
+    "muscle_id": 14,
+    "primary": "TRUE"
+  },
+  {
+    "lift_id": 16,
+    "muscle_id": 14,
+    "primary": "TRUE"
+  },
+  {
+    "lift_id": 17,
+    "muscle_id": 10,
+    "primary": "TRUE"
+  },
+  {
+    "lift_id": 17,
+    "muscle_id": 12,
+    "primary": "FALSE"
+  },
+  {
+    "lift_id": 17,
+    "muscle_id": 13,
+    "primary": "FALSE"
+  },
+  {
+    "lift_id": 18,
+    "muscle_id": 10,
+    "primary": "TRUE"
+  },
+  {
+    "lift_id": 18,
+    "muscle_id": 13,
+    "primary": "FALSE"
+  },
+  {
+    "lift_id": 18,
+    "muscle_id": 14,
+    "primary": "FALSE"
+  },
+  {
+    "lift_id": 19,
+    "muscle_id": 10,
+    "primary": "TRUE"
+  },
+  {
+    "lift_id": 19,
+    "muscle_id": 12,
+    "primary": "FALSE"
+  },
+  {
+    "lift_id": 19,
+    "muscle_id": 13,
+    "primary": "FALSE"
+  },
+  {
+    "lift_id": 19,
+    "muscle_id": 14,
+    "primary": "TRUE"
+  },
+  {
+    "lift_id": 19,
+    "muscle_id": 17,
+    "primary": "TRUE"
+  },
+  {
+    "lift_id": 20,
+    "muscle_id": 7,
+    "primary": "FALSE"
+  },
+  {
+    "lift_id": 20,
+    "muscle_id": 10,
+    "primary": "TRUE"
+  },
+  {
+    "lift_id": 20,
+    "muscle_id": 12,
+    "primary": "FALSE"
+  },
+  {
+    "lift_id": 20,
+    "muscle_id": 13,
+    "primary": "FALSE"
+  },
+  {
+    "lift_id": 20,
+    "muscle_id": 15,
+    "primary": "FALSE"
+  },
+  {
+    "lift_id": 21,
+    "muscle_id": 3,
+    "primary": "FALSE"
+  },
+  {
+    "lift_id": 21,
+    "muscle_id": 7,
+    "primary": "FALSE"
+  },
+  {
+    "lift_id": 21,
+    "muscle_id": 10,
+    "primary": "TRUE"
+  },
+  {
+    "lift_id": 21,
+    "muscle_id": 12,
+    "primary": "FALSE"
+  },
+  {
+    "lift_id": 21,
+    "muscle_id": 14,
+    "primary": "FALSE"
+  },
+  {
+    "lift_id": 22,
+    "muscle_id": 2,
+    "primary": "TRUE"
+  },
+  {
+    "lift_id": 22,
+    "muscle_id": 1,
+    "primary": "FALSE"
+  },
+  {
+    "lift_id": 22,
+    "muscle_id": 3,
+    "primary": "FALSE"
+  },
+  {
+    "lift_id": 22,
+    "muscle_id": 4,
+    "primary": "FALSE"
+  },
+  {
+    "lift_id": 22,
+    "muscle_id": 5,
+    "primary": "FALSE"
+  },
+  {
+    "lift_id": 22,
+    "muscle_id": 6,
+    "primary": "FALSE"
+  },
+  {
+    "lift_id": 22,
+    "muscle_id": 7,
+    "primary": "FALSE"
+  },
+  {
+    "lift_id": 23,
+    "muscle_id": 1,
+    "primary": "TRUE"
+  },
+  {
+    "lift_id": 24,
+    "muscle_id": 15,
+    "primary": "TRUE"
+  },
+  {
+    "lift_id": 25,
+    "muscle_id": 15,
+    "primary": "TRUE"
+  },
+  {
+    "lift_id": 26,
+    "muscle_id": 16,
+    "primary": "FALSE"
+  },
+  {
+    "lift_id": 26,
+    "muscle_id": 15,
+    "primary": "TRUE"
+  },
+  {
+    "lift_id": 26,
+    "muscle_id": 11,
+    "primary": "FALSE"
+  },
+  {
+    "lift_id": 27,
+    "muscle_id": 16,
+    "primary": "TRUE"
+  },
+  {
+    "lift_id": 27,
+    "muscle_id": 15,
+    "primary": "FALSE"
+  },
+  {
+    "lift_id": 27,
+    "muscle_id": 11,
+    "primary": "FALSE"
+  },
+  {
+    "lift_id": 28,
+    "muscle_id": 16,
+    "primary": "TRUE"
+  },
+  {
+    "lift_id": 28,
+    "muscle_id": 15,
+    "primary": "FALSE"
+  },
+  {
+    "lift_id": 28,
+    "muscle_id": 11,
+    "primary": "FALSE"
+  },
+  {
+    "lift_id": 28,
+    "muscle_id": 8,
+    "primary": "FALSE"
+  },
+  {
+    "lift_id": 29,
+    "muscle_id": 16,
+    "primary": "TRUE"
+  },
+  {
+    "lift_id": 29,
+    "muscle_id": 11,
+    "primary": "FALSE"
+  },
+  {
+    "lift_id": 30,
+    "muscle_id": 16,
+    "primary": "TRUE"
+  },
+  {
+    "lift_id": 30,
+    "muscle_id": 15,
+    "primary": "FALSE"
+  },
+  {
+    "lift_id": 30,
+    "muscle_id": 11,
+    "primary": "FALSE"
+  },
+  {
+    "lift_id": 31,
+    "muscle_id": 15,
+    "primary": "TRUE"
+  },
+  {
+    "lift_id": 31,
+    "muscle_id": 12,
+    "primary": "FALSE"
+  },
+  {
+    "lift_id": 32,
+    "muscle_id": 15,
+    "primary": "TRUE"
+  },
+  {
+    "lift_id": 32,
+    "muscle_id": 12,
+    "primary": "FALSE"
+  },
+  {
+    "lift_id": 32,
+    "muscle_id": 17,
+    "primary": "FALSE"
+  },
+  {
+    "lift_id": 32,
+    "muscle_id": 16,
+    "primary": "FALSE"
+  },
+  {
+    "lift_id": 33,
+    "muscle_id": 2,
+    "primary": "FALSE"
+  },
+  {
+    "lift_id": 33,
+    "muscle_id": 7,
+    "primary": "FALSE"
+  },
+  {
+    "lift_id": 33,
+    "muscle_id": 8,
+    "primary": "FALSE"
+  },
+  {
+    "lift_id": 33,
+    "muscle_id": 9,
+    "primary": "TRUE"
+  },
+  {
+    "lift_id": 33,
+    "muscle_id": 10,
+    "primary": "FALSE"
+  },
+  {
+    "lift_id": 33,
+    "muscle_id": 11,
+    "primary": "FALSE"
+  },
+  {
+    "lift_id": 33,
+    "muscle_id": 16,
+    "primary": "FALSE"
+  }
+]

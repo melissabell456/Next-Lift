@@ -1,0 +1,350 @@
+[
+  {
+    "lift_id": 1,
+    "equipment_id": 1
+  },
+  {
+    "lift_id": 1,
+    "equipment_id": 2
+  },
+  {
+    "lift_id": 1,
+    "equipment_id": 3
+  },
+  {
+    "lift_id": 1,
+    "equipment_id": 4
+  },
+  {
+    "lift_id": 2,
+    "equipment_id": 1
+  },
+  {
+    "lift_id": 2,
+    "equipment_id": 2
+  },
+  {
+    "lift_id": 2,
+    "equipment_id": 3
+  },
+  {
+    "lift_id": 2,
+    "equipment_id": 5
+  },
+  {
+    "lift_id": 3,
+    "equipment_id": 1
+  },
+  {
+    "lift_id": 3,
+    "equipment_id": 2
+  },
+  {
+    "lift_id": 3,
+    "equipment_id": 4
+  },
+  {
+    "lift_id": 4,
+    "equipment_id": 5
+  },
+  {
+    "lift_id": 4,
+    "equipment_id": 4
+  },
+  {
+    "lift_id": 5,
+    "equipment_id": 2
+  },
+  {
+    "lift_id": 6,
+    "equipment_id": 1
+  },
+  {
+    "lift_id": 6,
+    "equipment_id": 2
+  },
+  {
+    "lift_id": 6,
+    "equipment_id": 3
+  },
+  {
+    "lift_id": 6,
+    "equipment_id": 4
+  },
+  {
+    "lift_id": 7,
+    "equipment_id": 1
+  },
+  {
+    "lift_id": 7,
+    "equipment_id": 2
+  },
+  {
+    "lift_id": 7,
+    "equipment_id": 3
+  },
+  {
+    "lift_id": 7,
+    "equipment_id": 4
+  },
+  {
+    "lift_id": 8,
+    "equipment_id": 1
+  },
+  {
+    "lift_id": 8,
+    "equipment_id": 2
+  },
+  {
+    "lift_id": 8,
+    "equipment_id": 4
+  },
+  {
+    "lift_id": 9,
+    "equipment_id": 1
+  },
+  {
+    "lift_id": 9,
+    "equipment_id": 2
+  },
+  {
+    "lift_id": 10,
+    "equipment_id": 1
+  },
+  {
+    "lift_id": 10,
+    "equipment_id": 3
+  },
+  {
+    "lift_id": 10,
+    "equipment_id": 5
+  },
+  {
+    "lift_id": 11,
+    "equipment_id": 1
+  },
+  {
+    "lift_id": 11,
+    "equipment_id": 2
+  },
+  {
+    "lift_id": 11,
+    "equipment_id": 3
+  },
+  {
+    "lift_id": 11,
+    "equipment_id": 5
+  },
+  {
+    "lift_id": 12,
+    "equipment_id": 1
+  },
+  {
+    "lift_id": 12,
+    "equipment_id": 2
+  },
+  {
+    "lift_id": 12,
+    "equipment_id": 3
+  },
+  {
+    "lift_id": 12,
+    "equipment_id": 5
+  },
+  {
+    "lift_id": 13,
+    "equipment_id": 1
+  },
+  {
+    "lift_id": 13,
+    "equipment_id": 3
+  },
+  {
+    "lift_id": 13,
+    "equipment_id": 5
+  },
+  {
+    "lift_id": 14,
+    "equipment_id": 1
+  },
+  {
+    "lift_id": 14,
+    "equipment_id": 2
+  },
+  {
+    "lift_id": 14,
+    "equipment_id": 3
+  },
+  {
+    "lift_id": 14,
+    "equipment_id": 5
+  },
+  {
+    "lift_id": 15,
+    "equipment_id": 1
+  },
+  {
+    "lift_id": 15,
+    "equipment_id": 3
+  },
+  {
+    "lift_id": 15,
+    "equipment_id": 5
+  },
+  {
+    "lift_id": 16,
+    "equipment_id": 1
+  },
+  {
+    "lift_id": 16,
+    "equipment_id": 2
+  },
+  {
+    "lift_id": 16,
+    "equipment_id": 3
+  },
+  {
+    "lift_id": 17,
+    "equipment_id": 5
+  },
+  {
+    "lift_id": 18,
+    "equipment_id": 5
+  },
+  {
+    "lift_id": 19,
+    "equipment_id": 1
+  },
+  {
+    "lift_id": 19,
+    "equipment_id": 2
+  },
+  {
+    "lift_id": 19,
+    "equipment_id": 3
+  },
+  {
+    "lift_id": 19,
+    "equipment_id": 5
+  },
+  {
+    "lift_id": 20,
+    "equipment_id": 5
+  },
+  {
+    "lift_id": 21,
+    "equipment_id": 2
+  },
+  {
+    "lift_id": 22,
+    "equipment_id": 2
+  },
+  {
+    "lift_id": 23,
+    "equipment_id": 1
+  },
+  {
+    "lift_id": 23,
+    "equipment_id": 2
+  },
+  {
+    "lift_id": 23,
+    "equipment_id": 3
+  },
+  {
+    "lift_id": 23,
+    "equipment_id": 4
+  },
+  {
+    "lift_id": 24,
+    "equipment_id": 1
+  },
+  {
+    "lift_id": 24,
+    "equipment_id": 2
+  },
+  {
+    "lift_id": 24,
+    "equipment_id": 3
+  },
+  {
+    "lift_id": 24,
+    "equipment_id": 5
+  },
+  {
+    "lift_id": 25,
+    "equipment_id": 1
+  },
+  {
+    "lift_id": 25,
+    "equipment_id": 3
+  },
+  {
+    "lift_id": 25,
+    "equipment_id": 5
+  },
+  {
+    "lift_id": 26,
+    "equipment_id": 1
+  },
+  {
+    "lift_id": 26,
+    "equipment_id": 2
+  },
+  {
+    "lift_id": 27,
+    "equipment_id": 1
+  },
+  {
+    "lift_id": 27,
+    "equipment_id": 2
+  },
+  {
+    "lift_id": 28,
+    "equipment_id": 4
+  },
+  {
+    "lift_id": 29,
+    "equipment_id": 1
+  },
+  {
+    "lift_id": 29,
+    "equipment_id": 3
+  },
+  {
+    "lift_id": 29,
+    "equipment_id": 5
+  },
+  {
+    "lift_id": 30,
+    "equipment_id": 1
+  },
+  {
+    "lift_id": 30,
+    "equipment_id": 2
+  },
+  {
+    "lift_id": 31,
+    "equipment_id": 1
+  },
+  {
+    "lift_id": 31,
+    "equipment_id": 2
+  },
+  {
+    "lift_id": 31,
+    "equipment_id": 3
+  },
+  {
+    "lift_id": 31,
+    "equipment_id": 4
+  },
+  {
+    "lift_id": 32,
+    "equipment_id": 4
+  },
+  {
+    "lift_id": 33,
+    "equipment_id": 4
+  }
+]

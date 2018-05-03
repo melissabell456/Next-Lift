@@ -1,0 +1,74 @@
+[
+  {
+    "id": 1,
+    "name": "calves"
+  },
+  {
+    "id": 2,
+    "name": "quadriceps"
+  },
+  {
+    "id": 3,
+    "name": "hamstrings"
+  },
+  {
+    "id": 4,
+    "name": "adductor"
+  },
+  {
+    "id": 5,
+    "name": "abductor"
+  },
+  {
+    "id": 6,
+    "name": "glutes"
+  },
+  {
+    "id": 7,
+    "name": "lower back"
+  },
+  {
+    "id": 8,
+    "name": "obliques"
+  },
+  {
+    "id": 9,
+    "name": "abs"
+  },
+  {
+    "id": 10,
+    "name": "latissimus dorsi"
+  },
+  {
+    "id": 11,
+    "name": "anterior deltoid"
+  },
+  {
+    "id": 12,
+    "name": "posterior deltoid"
+  },
+  {
+    "id": 13,
+    "name": "trapezius"
+  },
+  {
+    "id": 14,
+    "name": "bicep"
+  },
+  {
+    "id": 15,
+    "name": "tricep"
+  },
+  {
+    "id": 16,
+    "name": "pectoralis"
+  },
+  {
+    "id": 17,
+    "name": "lateral deltoid"
+  },
+  {
+    "id": 18,
+    "name": "forearm"
+  }
+]
