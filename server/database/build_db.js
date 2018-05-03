@@ -1,7 +1,6 @@
 'use strict';
 
 const sequelize = require('sequelize');
-// const app = require('../app/app'); TODO: remove if not needed
 const models = require('../models/');
 
 const lifts = require('./json/lifts');
@@ -28,7 +27,7 @@ const createDb = () => {
       return models.Lift_Equipment.bulkCreate(lift_equipment);
     })
     .then( () => {
-      return models.User.bulkCreate({
+      return models.User.create({
         first_name: "Melissa",
         last_name: "Bell",
         user_name: "MelBell",
@@ -38,20 +37,13 @@ const createDb = () => {
       });
     })
     .then( () => {
-      return models.User_Lift.bulkCreate({
+      return models.User_Lift.create({
         lift_id: 1,
         user_id: 1,
         equipment_id: 1,
         weight: 60,
         rep_count: 12
-      },
-    {
-      lift_id: 1,
-      user_id: 1,
-      equipment_id: 2,
-      weight: 200,
-      rep_count: 6
-    });
+      });
     })
     .then(response => {
       process.exit();
