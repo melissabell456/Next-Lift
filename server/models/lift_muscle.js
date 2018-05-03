@@ -1,12 +1,15 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   var Lift_Muscle = sequelize.define('Lift_Muscle', {
-    lift_id: DataTypes.INTEGER,
-    muscle_id: DataTypes.INTEGER,
     primary: DataTypes.BOOLEAN
   }, { tableName: lift_muscle, timestamps: false });
   Lift_Muscle.associate = function(models) {
-    // associations can be defined here
+    Lift_Muscle.belongsTo(models.Lift, {
+      foreignKey: 'lift_id'
+    });
+    Lift_Muscle.belongsTo(models.muscle, {
+      foreignKey: 'muscle_id'
+    });
   };
   return Lift_Muscle;
 };

@@ -7,7 +7,15 @@ module.exports = (sequelize, DataTypes) => {
     rep_count: DataTypes.INTEGER
   }, { tableName: user_lift } );
   User_Lift.associate = function(models) {
-    // associations can be defined here
+    User_Lift.belongsTo(models.User, {
+      foreignKey: 'user_id'
+    });
+    User_Lift.belongsTo(models.Lift, {
+      foreignKey: 'lift_id'
+    });
+    User_Lift.belongsTo(models.Equipment, {
+      foreignKey: 'equipment_id'
+    });
   };
   return User_Lift;
 };

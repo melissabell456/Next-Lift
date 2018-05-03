@@ -6,7 +6,9 @@ module.exports = (sequelize, DataTypes) => {
     active: DataTypes.BOOLEAN
   }, { tableName: users } );
   User.associate = function(models) {
-    // associations can be defined here
+    User.hasMany(models.User_Lift, {
+      foreignKey: "user_id"
+    })
   };
   return User;
 };
