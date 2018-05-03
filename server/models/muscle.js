@@ -2,14 +2,14 @@
 module.exports = (sequelize, DataTypes) => {
   var Muscle = sequelize.define('Muscle', {
     id: {
-      type: Sequelize.INTEGER,
+      type: DataTypes.INTEGER,
       primaryKey: true,
       autoIncrement: false
     },
     name: DataTypes.STRING
-  }, { tableName: muscles, timestamps: false });
+  }, { tableName: 'muscles', timestamps: false });
   Muscle.associate = function(models) {
-    Muscle.hasMany(models.lift_muscle, {
+    Muscle.hasMany(models.Lift_Muscle, {
       foreignKey: 'muscle_id'
     })
   };

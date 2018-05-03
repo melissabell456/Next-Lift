@@ -2,14 +2,14 @@
 module.exports = (sequelize, DataTypes) => {
   var Lift = sequelize.define('Lift', {
     id: {
-      type: Sequelize.INTEGER,
+      type: DataTypes.INTEGER,
       primaryKey: true,
       autoIncrement: false
     },
     name: DataTypes.STRING,
     motion: DataTypes.STRING,
     type: DataTypes.STRING
-  }, { tableName: lifts, timestamps: false });
+  }, { tableName: 'lifts', timestamps: false });
   Lift.associate = function(models) {
     Lift.hasMany(models.Lift_Equipment, {
       foreignKey: "lift_id"

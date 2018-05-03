@@ -6,7 +6,7 @@ module.exports = (sequelize, DataTypes) => {
     equipment_id: DataTypes.INTEGER,
     weight: DataTypes.INTEGER,
     rep_count: DataTypes.INTEGER
-  }, { tableName: user_lift } );
+  }, { tableName: 'user_lift' } );
   User_Lift.associate = function(models) {
     User_Lift.belongsTo(models.User, {
       foreignKey: 'user_id'

@@ -1,9 +1,8 @@
 'use strict';
 
 const sequelize = require('sequelize');
-// const qui = require('sequelize/lib/query-interface'); TODO: remove if not needed
 // const app = require('../app/app'); TODO: remove if not needed
-const models = require('../models');
+const models = require('../models/');
 
 const lifts = require('./json/lifts');
 const muscles = require('./json/muscle-groups');
@@ -11,24 +10,24 @@ const equipment = require('./json/equipment');
 const lift_muscle = require('./json/lift_muscle');
 const lift_equipment = require('./json/lift_equipment');
 
-const createDb = qi => {
+const createDb = () => {
   return models.sequelize.sync({force: true})
-    .then(qi => {
+    .then( () => {
       return models.Lift.bulkCreate(lifts);
     })
-    .then(qi => {
+    .then( () => {
       return models.Muscle.bulkCreate(muscles);
     })
-    .then(qi => {
+    .then( () => {
       return models.Equipment.bulkCreate(equipment);
     })
-    .then(qi => {
+    .then( () => {
       return models.Lift_Muscle.bulkCreate(lift_muscle);
     })
-    .then(qi => {
+    .then( () => {
       return models.Lift_Equipment.bulkCreate(lift_equipment);
     })
-    .then(qi => {
+    .then( () => {
       return models.User.bulkCreate({
         first_name: "Melissa",
         last_name: "Bell",
@@ -38,7 +37,7 @@ const createDb = qi => {
         active: true
       });
     })
-    .then(qi => {
+    .then( () => {
       return models.User_Lift.bulkCreate({
         lift_id: 1,
         user_id: 1,

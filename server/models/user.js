@@ -7,7 +7,7 @@ module.exports = (sequelize, DataTypes) => {
     email: DataTypes.STRING,
     password: DataTypes.STRING,
     active: DataTypes.BOOLEAN
-  }, { tableName: users } );
+  }, { tableName: 'users' } );
   User.associate = function(models) {
     User.hasMany(models.User_Lift, {
       foreignKey: "user_id"
