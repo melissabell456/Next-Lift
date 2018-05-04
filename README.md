@@ -43,3 +43,11 @@
       }
 
 1. Run ``` node server/database/build_db.js ``` to build database (TODO: create script)
+
+## API Endpoints
+
+1. Use ```search``` route for filtering lift db: 
+  - GET ```search?name="NAME"``` to search by name
+  - GET ```search?type="COMPOUND/ISOLATION"``` to filter by type
+  - GET ```search?region="UPPER/LOWER"``` to filter by region
+  - GET ```search?motion="PUSH/PULL"``` to filter by motion
