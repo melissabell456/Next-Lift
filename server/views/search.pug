@@ -5,24 +5,10 @@ block content
     input(type="hidden" name="column" value="name")
     input(type="search", name='term', placeholder="Search By Name", aria-label='Search')
     button(type='submit') Search
-  form(method='get', action='/search')
-    input(type="hidden" name="column" value="type")
-    input(type="submit" name="term" value="isolation")
-  form(method='get', action='/search')
-    input(type="hidden" name="column" value="type")
-    input(type="submit" name="term" value="compound")
-  form(method='get', action='/search')
-    input(type="hidden" name="column" value="motion")
-    input(type="submit" name="term" value="push")
-  form(method='get', action='/search')
-    input(type="hidden" name="column" value="motion")
-    input(type="submit" name="term" value="pull")
-  form(method='get', action='/search')
-    input(type="hidden" name="column" value="region")
-    input(type="submit" name="term" value="lower")
-  form(method='get', action='/search')
-    input(type="hidden" name="column" value="region")
-    input(type="submit" name="term" value="upper")
+  for form in formAttributes
+    form(method='get', action='/search')
+        input(type="hidden" name="column" value=form.column)
+        input(type="submit" name="term" value=form.value)
   if(state === "query")
     for lift in results
       include partials/lift-card
