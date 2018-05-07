@@ -8,7 +8,8 @@ module.exports = (sequelize, DataTypes) => {
     },
     name: DataTypes.STRING,
     motion: DataTypes.STRING,
-    type: DataTypes.STRING
+    type: DataTypes.STRING,
+    region: DataTypes.STRING
   }, { tableName: 'lifts', timestamps: false });
   Lift.associate = function(models) {
     Lift.hasMany(models.Lift_Equipment, {

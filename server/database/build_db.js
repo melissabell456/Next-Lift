@@ -8,6 +8,7 @@ const muscles = require('./json/muscle-groups');
 const equipment = require('./json/equipment');
 const lift_muscle = require('./json/lift_muscle');
 const lift_equipment = require('./json/lift_equipment');
+const user_lifts = require('./json/user_lifts');
 
 const createDb = () => {
   return models.sequelize.sync({force: true})
@@ -37,13 +38,7 @@ const createDb = () => {
       });
     })
     .then( () => {
-      return models.User_Lift.create({
-        lift_id: 1,
-        user_id: 1,
-        equipment_id: 1,
-        weight: 60,
-        rep_count: 12
-      });
+      return models.User_Lift.bulkCreate(user_lifts);
     })
     .then(response => {
       process.exit();

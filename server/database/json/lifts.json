@@ -3,198 +3,231 @@
     "id": 1,
     "name": "Squat",
     "motion": "Push",
-    "type": "compound"
+    "type": "compound",
+    "region": "lower"
   },
   {
     "id": 2,
     "name": "deadlift",
     "motion": "Pull",
-    "type": "compound"
+    "type": "compound",
+    "region": "lower"
   },
   {
     "id": 3,
     "name": "Glute Bridge",
     "motion": "Push",
-    "type": "compound"
+    "type": "compound",
+    "region": "lower"
   },
   {
     "id": 4,
     "name": "Cable Kick-backs",
     "motion": "Pull",
-    "type": "isolation"
+    "type": "isolation",
+    "region": "lower"
   },
   {
     "id": 5,
     "name": "Hyperextension",
     "motion": "Pull",
-    "type": "compound"
+    "type": "compound",
+    "region": "lower"
   },
   {
     "id": 6,
     "name": "Lunge",
     "motion": "Push",
-    "type": "compound"
+    "type": "compound",
+    "region": "lower"
   },
   {
     "id": 7,
     "name": "Plie Squat",
     "motion": "Push",
-    "type": "compound"
+    "type": "compound",
+    "region": "lower"
   },
   {
     "id": 8,
     "name": "Squat Jump",
     "motion": "Push",
-    "type": "compound"
+    "type": "compound",
+    "region": "lower"
   },
   {
     "id": 9,
     "name": "Shoulder Press",
     "motion": "Push",
-    "type": "compound"
+    "type": "compound",
+    "region": "upper"
   },
   {
     "id": 10,
     "name": "Lateral Raise",
     "motion": "Push",
-    "type": "isolation"
+    "type": "isolation",
+    "region": "upper"
   },
   {
     "id": 11,
     "name": "upright row",
     "motion": "Pull",
-    "type": "compound"
+    "type": "compound",
+    "region": "upper"
   },
   {
     "id": 12,
     "name": "front raise",
     "motion": "Push",
-    "type": "isolation"
+    "type": "isolation",
+    "region": "upper"
   },
   {
     "id": 13,
     "name": "rear delt flys",
     "motion": "Pull",
-    "type": "isolation"
+    "type": "isolation",
+    "region": "upper"
   },
   {
     "id": 14,
     "name": "curl",
     "motion": "Pull",
-    "type": "isolation"
+    "type": "isolation",
+    "region": "upper"
   },
   {
     "id": 15,
     "name": "hammer curl",
     "motion": "Pull",
-    "type": "isolation"
+    "type": "isolation",
+    "region": "upper"
   },
   {
     "id": 16,
     "name": "preacher curl",
     "motion": "Pull",
-    "type": "isolation"
+    "type": "isolation",
+    "region": "upper"
   },
   {
     "id": 17,
     "name": "pull down",
     "motion": "Pull",
-    "type": "compound"
+    "type": "compound",
+    "region": "upper"
   },
   {
     "id": 18,
     "name": "underhand pull down",
     "motion": "Pull",
-    "type": "compound"
+    "type": "compound",
+    "region": "upper"
   },
   {
     "id": 19,
     "name": "row",
     "motion": "Pull",
-    "type": "compound"
+    "type": "compound",
+    "region": "upper"
   },
   {
     "id": 20,
     "name": "straight armed pull down",
     "motion": "Pull",
-    "type": "isolation"
+    "type": "isolation",
+    "region": "upper"
   },
   {
     "id": 21,
     "name": "T-Bar Row",
     "motion": "Pull",
-    "type": "compound"
+    "type": "compound",
+    "region": "upper"
   },
   {
     "id": 22,
     "name": "Front squat",
     "motion": "Push",
-    "type": "compound"
+    "type": "compound",
+    "region": "lower"
   },
   {
     "id": 23,
     "name": "Calf Raise",
     "motion": "Push",
-    "type": "isolation"
+    "type": "isolation",
+    "region": "lower"
   },
   {
     "id": 24,
     "name": "Skull Crusher",
     "motion": "Push",
-    "type": "isolation"
+    "type": "isolation",
+    "region": "upper"
   },
   {
     "id": 25,
     "name": "Tricep Extension",
     "motion": "Pull",
-    "type": "isolation"
+    "type": "isolation",
+    "region": "upper"
   },
   {
     "id": 26,
     "name": "Close Grip Bench Press",
     "motion": "Push",
-    "type": "compound"
+    "type": "compound",
+    "region": "upper"
   },
   {
     "id": 27,
     "name": "Bench Press",
     "motion": "Push",
-    "type": "compound"
+    "type": "compound",
+    "region": "upper"
   },
   {
     "id": 28,
     "name": "Push up",
     "motion": "Push",
-    "type": "compound"
+    "type": "compound",
+    "region": "upper"
   },
   {
     "id": 29,
     "name": "Chest fly",
     "motion": "Push",
-    "type": "isolation"
+    "type": "isolation",
+    "region": "upper"
   },
   {
     "id": 30,
     "name": "Wide grip bench press",
     "motion": "Push",
-    "type": "isolation"
+    "type": "isolation",
+    "region": "upper"
   },
   {
     "id": 31,
     "name": "Seated tricep extension",
     "motion": "Push",
-    "type": "isolation"
+    "type": "isolation",
+    "region": "upper"
   },
   {
     "id": 32,
     "name": "Dip",
     "motion": "Push",
-    "type": "compound"
+    "type": "compound",
+    "region": "upper"
   },
   {
     "id": 33,
     "name": "plank",
     "motion": "Push",
-    "type": "compound"
+    "type": "compound",
+    "region": "upper"
   }
 ]
