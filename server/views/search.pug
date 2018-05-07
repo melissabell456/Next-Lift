@@ -1,0 +1,8 @@
+extends layout
+
+block content
+  form(method='get', action='/search')
+  input(type="search", name='term', placeholder="Search By Name", aria-label='Search')
+  button(type='submit') Search
+  //- for lift in lifts
+  //-   include partials/lift-card
