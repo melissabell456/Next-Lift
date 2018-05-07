@@ -2,7 +2,10 @@ extends layout
 
 block content
   form(method='get', action='/search')
-  input(type="search", name='term', placeholder="Search By Name", aria-label='Search')
-  button(type='submit') Search
-  //- for lift in lifts
-  //-   include partials/lift-card
+    input(type="search", name='term', placeholder="Search By Name", aria-label='Search')
+    input(type="hidden" name="column" value="name") 
+    button(type='submit') Search
+    //- input(type="search", name='term', placeholder="Search By Name", aria-label='Search')
+  if(state=query)
+    for lift in results
+      include partials/lift-card
