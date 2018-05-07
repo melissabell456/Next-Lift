@@ -47,7 +47,8 @@
 ## API Endpoints
 
 1. Use ```search``` route for filtering lift db: 
-  - GET ```search?name="NAME"``` to search by name
-  - GET ```search?type="COMPOUND/ISOLATION"``` to filter by type
-  - GET ```search?region="UPPER/LOWER"``` to filter by region
-  - GET ```search?motion="PUSH/PULL"``` to filter by motion
+  -  to search by name: GET ```search?column=name&term=lift name```
+  - to filter by type: GET ```search?column=type&term=compound or isolation```
+  -  to filter by region: GET ```search?column=region&term=upper or lower```
+  - to filter by motion: GET ```search?column=motion&term=push or pull```
+

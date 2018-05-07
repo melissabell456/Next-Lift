@@ -1,17 +1,18 @@
 'use strict';
 
-module.exports.getFilterType = (req, res, next) => {
-  if(req.query.name){
-    console.log("NAME!", req.query.name);
+const Sequelize = require('sequelize');
+var sequelize = new Sequelize({
+  "username": "Melis",
+  "password": "postgres",
+  "database": "final-wrkout",
+  "dialect": "postgres"
   }
-  else if(req.query.type) {
-    console.log("TYPE!", req.query.type);
-  }
-  else if(req.query.region) {
-    console.log("REGION!", req.query.region);
-  }
-  else if(req.query.motion){
-    console.log("MOTION!", req.query.motion);
-  }
-  console.log(req.query, "ZZZ");
+);
+
+module.exports.searchLiftsTable = (req, res, next) => {
+
+  sequelize.query(
+    `SELECT lifts.name as title FROM lifts WHERE lifts.${req.query.column} ILIKE '%${req.query.term}%'`).spread((results, metadata) => {
+    console.log(results);
+  })
 }
