@@ -4,7 +4,7 @@ const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 const routes = require('./routes/');
-const flash = require('express-flash'); //TODO: what is this again and do I actually need it
+const flash = require('express-flash');
 
 //the below sets the models as a property on the req, requiring these into middleware instead of modules will prevent multiple connections to the database at a time
 app.set('models', require('./models/'));
@@ -18,7 +18,7 @@ app.set('view engine', 'pug');
 //authentication
 const session = require('express-session');
 const passport = require('passport');
-// require("./config/passport-strat.js");
+require("./config/passport-strat.js");
 
 // middleware
 // Injects session persistence into middleware stack
@@ -28,6 +28,8 @@ app.use(session({
   saveUninitialized: true
   })
 );
+
+app.use(flash());
 app.use(passport.initialize());
 app.use(passport.session());
 // This custom middleware adds the logged-in user's info to the 'locals' variable,
@@ -41,7 +43,6 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(routes);
 
-//TODO: add error handler for all
 
 app.listen(3000, () => {
   console.log("server listening on port 3000");

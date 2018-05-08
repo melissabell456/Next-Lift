@@ -33,7 +33,7 @@ const createDb = () => {
         last_name: "Bell",
         user_name: "MelBell",
         email: "melissabell456@gmail.com",
-        password: "$2a$08$K1LoheHX1gkfDvInXGHiLuo3Fbi1AU/HM2K27I0foVKbVzYEHF5Ru",
+        password: "$2a$08$i6dqLGaB/qgowdD7VQQ6PuNjVxzfP0Kl1x6n6jS9zylnbfQyFwsl2",
         active: true
       });
     })
