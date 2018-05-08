@@ -43,6 +43,22 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(routes);
 
+//TODO: update this error handler. it is copy pasta'd from another project
+
+app.use( (req, res, next) => {
+  let err = new Error('Page not found');
+  err.status = 404;
+  next(err);
+});
+
+app.use( (err, req, res, next) => {
+  res.status(err.status || 500);
+  // the all encompassing error handler
+  res.json({
+    message: "Oh no! We couldn't find what you were looking for.",
+    err: err.message
+  })
+});
 
 app.listen(3000, () => {
   console.log("server listening on port 3000");
