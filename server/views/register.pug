@@ -1,0 +1,12 @@
+extends layout
+
+block content
+  h2 Register
+  form(method='post', action='/register')
+    input(type="text", name="first_name", placeholder="First Name")
+    input(type="text", name="last_name", placeholder="Last Name")
+    input(type="text", name="email", placeholder="email")
+    input(type="text", name="username", placeholder="username")
+    input(type="password", name="password", placeholder="Password")
+    input(type="password", name="confirmation", placeholder="Confirm Password")
+    button(type='submit') Register
