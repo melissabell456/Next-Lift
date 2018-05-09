@@ -35,4 +35,6 @@ module.exports.searchLiftsTable = (req, res, next) => {
     res.render('search', { formAttributes, term: req.query.term, results, state: "query" });
   })
 
+// don't forget, when adding lifts, first you need to change the boolean value on the latest lift to false and then add the new lift as true
+
 }

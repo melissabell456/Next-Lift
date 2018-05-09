@@ -5,11 +5,12 @@ const router = Router();
 const checkAuth = require('./checkAuth');
 
 router.get('/', function(req, res, next){
-  res.render('index');
+  req.user ? res.render('index') : res.render('register');
 });
 router.use(require('./auth-route'));
-// TODO: when auth is set up, uncomment this and add anything requiring authentication below this middleware
-// router.use(checkAuth);
+
+// any routes below this will require authentication, if the user is not authenticated, they will be redirected to the home page 
+router.use(checkAuth);
 
 router.use(require('./search-route'));
 

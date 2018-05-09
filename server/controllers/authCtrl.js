@@ -36,7 +36,6 @@ module.exports.displayLogin = (req, res, next) => {
 
 module.exports.login = (req, res, next) => {
   // Note we're using different strategy, this time for logging in
-  console.log("ZYZ", req.body);
   passport.authenticate('local-signin', (err, user, msgObj) => {
     if (err) {  console.log(err) } //or return next(err) once handler set up in app.js
     if (!user) {
