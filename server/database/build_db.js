@@ -9,6 +9,7 @@ const equipment = require('./json/equipment');
 const lift_muscle = require('./json/lift_muscle');
 const lift_equipment = require('./json/lift_equipment');
 const user_lifts = require('./json/user_lifts');
+const users = require('./json/users');
 
 const createDb = () => {
   return models.sequelize.sync({force: true})
@@ -28,14 +29,7 @@ const createDb = () => {
       return models.Lift_Equipment.bulkCreate(lift_equipment);
     })
     .then( () => {
-      return models.User.create({
-        first_name: "Melissa",
-        last_name: "Bell",
-        user_name: "MelBell",
-        email: "melissabell456@gmail.com",
-        password: "$2a$08$i6dqLGaB/qgowdD7VQQ6PuNjVxzfP0Kl1x6n6jS9zylnbfQyFwsl2",
-        active: true
-      });
+      return models.User.bulkCreate(users);
     })
     .then( () => {
       return models.User_Lift.bulkCreate(user_lifts);
