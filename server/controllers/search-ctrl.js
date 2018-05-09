@@ -16,7 +16,22 @@ module.exports.renderSearchView = (req, res, next) => {
 
 module.exports.searchLiftsTable = (req, res, next) => {
   sequelize.query(
-    `SELECT lifts.name as title FROM lifts WHERE lifts.${req.query.column} ILIKE '%${req.query.term}%'`).spread((results, metadata) => {
+  `SELECT
+    l.name as liftName, 
+    e.name as equipment,
+    to_char(ul."createdAt", 'MM-DD-YYYY') as liftDate,
+    ul.weight as weightLifted, 
+    ul.rep_count as reps,
+    ul.lift_equipment_id as comboId,
+    ul.id as refId
+  FROM lift_equipment le
+  LEFT JOIN user_lift ul ON le.id = ul.lift_equipment_id 
+    AND ul.user_id = ${req.user.id}
+    AND ul.most_recent = true
+  LEFT JOIN lifts l ON l.id = le.lift_id
+  LEFT JOIN equipment e ON e.id = le.equipment_id
+  WHERE l.${req.query.column} ILIKE '%${req.query.term}%'`
+    ).spread((results, metadata) => {
     res.render('search', { formAttributes, term: req.query.term, results, state: "query" });
   })
 
