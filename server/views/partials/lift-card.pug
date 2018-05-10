@@ -2,5 +2,7 @@ h3 #{lift.equip} #{lift.liftname}
 p  Last Lift Date: #{lift.liftdate}
 p  Weight Used: #{lift.weight}
 p  Reps Completed: #{lift.rep_count}
-
+button Add To Workout
+if(log_privilege === "true")
+  button Log Workout
 //- TODO: conditionals for display data

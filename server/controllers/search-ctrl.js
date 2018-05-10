@@ -26,7 +26,7 @@ module.exports.searchLiftsTable = (req, res, next) => {
   WHERE (ul.user_id = ${req.user.id} OR ul.user_id IS NULL)
   AND ap.${req.query.column} ILIKE '%${req.query.term}%'`
     ).spread((results, metadata) => {
-    res.render('search', { formAttributes, term: req.query.term, results, state: "query" });
+    res.render('search', { formAttributes, term: req.query.term, results, state: "query", log_privilege: "true" });
   })
 
 
