@@ -58,10 +58,15 @@ SELECT
 FROM lifts l
 JOIN lift_equipment le ON le.lift_id = l.id
 JOIN equipment e ON le.equipment_id = e.id
-
+```
+```
 CREATE VIEW user_log
 AS
-SELECT user_id, lift_id, equipment_id, MAX("createdAt") as liftDate
+SELECT 
+  user_id, 
+  lift_id, 
+  equipment_id, 
+  MAX("createdAt") as liftDate
 FROM user_lift
 GROUP BY user_id, lift_id, equipment_id
 
