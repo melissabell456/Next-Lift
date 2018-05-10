@@ -16,25 +16,19 @@ module.exports.renderSearchView = (req, res, next) => {
 
 module.exports.searchLiftsTable = (req, res, next) => {
   sequelize.query(
-  `SELECT
-    l.name as liftName, 
-    e.name as equipment,
-    to_char(ul."createdAt", 'MM-DD-YYYY') as liftDate,
-    ul.weight as weightLifted, 
-    ul.rep_count as reps,
-    ul.lift_equipment_id as comboId,
-    ul.id as refId
-  FROM lift_equipment le
-  LEFT JOIN user_lift ul ON le.id = ul.lift_equipment_id 
-    AND ul.user_id = ${req.user.id}
-    AND ul.most_recent = true
-  LEFT JOIN lifts l ON l.id = le.lift_id
-  LEFT JOIN equipment e ON e.id = le.equipment_id
-  WHERE l.${req.query.column} ILIKE '%${req.query.term}%'`
+  `SELECT * 
+  FROM lift_and_equipment_combos ap
+  LEFT JOIN user_log ul ON ul.lift_id = ap.lift_id AND ul.equipment_id = ap.equipment_id
+  LEFT JOIN user_lift u ON ul.user_id = u.user_id 
+    AND ul.lift_id = u.lift_id 
+    AND ul.equipment_id = u.equipment_id 
+    AND ul.liftDate = u."createdAt"
+  WHERE (ul.user_id = ${req.user.id} OR ul.user_id IS NULL)
+  AND ap.${req.query.column} ILIKE '%${req.query.term}%'`
     ).spread((results, metadata) => {
+    console.log(results);
     res.render('search', { formAttributes, term: req.query.term, results, state: "query" });
   })
 
-// don't forget, when adding lifts, first you need to change the boolean value on the latest lift to false and then add the new lift as true
 
 }
