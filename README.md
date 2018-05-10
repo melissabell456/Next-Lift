@@ -43,6 +43,29 @@
       }
 
 1. Run ``` node server/database/build_db.js ``` to build database (TODO: create script)
+1. Set up below views in pgAdmin
+  ```
+  CREATE VIEW lift_and_equipment_combos
+AS
+SELECT 
+	l.id AS lift_id,
+	l.name AS liftName,
+	l.motion,
+	l.type,
+	l.region,
+	e.id AS equipment_id,
+	e.name AS equip
+FROM lifts l
+JOIN lift_equipment le ON le.lift_id = l.id
+JOIN equipment e ON le.equipment_id = e.id
+
+CREATE VIEW user_log
+AS
+SELECT user_id, lift_id, equipment_id, MAX("createdAt") as liftDate
+FROM user_lift
+GROUP BY user_id, lift_id, equipment_id
+
+```
 
 ## API Endpoints
 
