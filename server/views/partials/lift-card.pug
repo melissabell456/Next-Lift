@@ -1,8 +1,12 @@
 h3 #{lift.equip} #{lift.liftname}
-p  Last Lift Date: #{lift.liftdate}
-p  Weight Used: #{lift.weight}
-p  Reps Completed: #{lift.rep_count}
+if(lift.liftdate != null)
+  p  Last Lift Date: #{lift.liftdate}
+  p  Weight Used: #{lift.weight}
+  p  Reps Completed: #{lift.rep_count}
+else
+  p No Lifts Logged
 button Add To Workout
 if(log_privilege === "true")
-  button Log Workout
-//- TODO: conditionals for display data
+  form(method='get', action='/log')
+    input(type="hidden", name="lift", value=lift)
+    button(type='submit') Log a Lift

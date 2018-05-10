@@ -13,5 +13,6 @@ router.use(require('./auth-route'));
 router.use(checkAuth);
 
 router.use(require('./search-route'));
+router.use(require('./log-route'));
 
 module.exports = router;

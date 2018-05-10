@@ -34,9 +34,9 @@ const createDb = () => {
     .then( () => {
       return models.User_Lift.bulkCreate(user_lifts);
     })
-    .then( () => {
-      return models.Suggested_User_Lift.create();
-    })
+    // .then( () => {
+    //   return models.Suggested_User_Lift.create();
+    // })
     .then(response => {
       process.exit();
     })
