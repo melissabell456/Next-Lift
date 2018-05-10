@@ -3,7 +3,7 @@ const passport = require('passport');
 
 // creating new users
 module.exports.displayRegister = (req, res) => {
-  res.render('register');
+  res.render('auth');
 };
 
 module.exports.register = (req, res, next) => {
@@ -12,7 +12,7 @@ module.exports.register = (req, res, next) => {
     passport.authenticate('local-signup', (err, user, msgObj) => {
 
       if (err) {  console.log(err); } //or return next(err)
-      if (!user) { return res.render('register', msgObj); }
+      if (!user) { return res.render('auth', msgObj); }
 
       // Go ahead and login the new user once they are signed up
       req.logIn(user, (err) => {
@@ -25,7 +25,7 @@ module.exports.register = (req, res, next) => {
       });
     })(req, res, next);
   } else {
-    res.render('register', { message: 'Password & password confirmation do not match' })
+    res.render('auth', { message: 'Password & password confirmation do not match' })
   }
 };
 

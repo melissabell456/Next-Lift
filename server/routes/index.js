@@ -5,7 +5,7 @@ const router = Router();
 const checkAuth = require('./checkAuth');
 
 router.get('/', function(req, res, next){
-  req.user ? res.render('index') : res.render('register');
+  req.user ? res.render('index') : res.render('auth');
 });
 router.use(require('./auth-route'));
 

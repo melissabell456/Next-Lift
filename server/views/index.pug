@@ -1,4 +1,7 @@
 extends layout
 
 block content
+  //- a(href='/logout') Log Out
+  form(method='post', action='/logout')
+    button(type='submit') Log Out
   h1 My Dashboard
