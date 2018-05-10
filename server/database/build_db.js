@@ -34,10 +34,15 @@ const createDb = () => {
     .then( () => {
       return models.User_Lift.bulkCreate(user_lifts);
     })
+    .then( () => {
+      return models.Suggested_User_Lift.create();
+    })
     .then(response => {
       process.exit();
     })
     .catch(err => console.log(err));
 };
+
+// TODO: add functionality to automate adding views when building DB
 
 createDb();

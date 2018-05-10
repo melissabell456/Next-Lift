@@ -6,8 +6,7 @@ module.exports = (sequelize, DataTypes) => {
     user_id: DataTypes.INTEGER,
     equipment_id: DataTypes.INTEGER,
     weight: DataTypes.INTEGER,
-    rep_count: DataTypes.INTEGER,
-    most_recent: DataTypes.BOOLEAN
+    rep_count: DataTypes.INTEGER
   }, { tableName: 'user_lift' } );
   User_Lift.associate = function(models) {
     User_Lift.belongsTo(models.User, {
