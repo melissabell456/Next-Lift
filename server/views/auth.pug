@@ -2,13 +2,13 @@ extends layout
 
 block content
 
-  h2 Log In
+  h2 Hello, you must be a member to access our services. Please log in. 
   form(method='post', action='/login')
     input(type="text", name="email", placeholder="email")
     input(type="password", name="password", placeholder="Password")
     button(type='submit') Log In
     
-  h2 Register
+  h3 Not a member? Register Below.
   form(method='post', action='/register')
     input(type="text", name="first_name", placeholder="First Name")
     input(type="text", name="last_name", placeholder="Last Name")
