@@ -22,11 +22,10 @@ module.exports.searchLiftsTable = (req, res, next) => {
   LEFT JOIN user_lift u ON ul.user_id = u.user_id 
     AND ul.lift_id = u.lift_id 
     AND ul.equipment_id = u.equipment_id 
-    AND ul.liftDate = u."createdAt"
+    AND ul.liftDate = to_char(u."createdAt", 'MM-DD-YYYY')
   WHERE (ul.user_id = ${req.user.id} OR ul.user_id IS NULL)
   AND ap.${req.query.column} ILIKE '%${req.query.term}%'`
     ).spread((results, metadata) => {
-    console.log(results);
     res.render('search', { formAttributes, term: req.query.term, results, state: "query" });
   })
 
