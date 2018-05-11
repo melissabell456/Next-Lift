@@ -28,7 +28,6 @@ module.exports.renderLiftForm = (req, res, next) => {
     console.log(results);
     res.render('log-lift-form', { results } );
   })
-  // res.json(liftStats);
 } 
 
 module.exports.recordLift = (req, res, next) => {
