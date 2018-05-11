@@ -8,5 +8,6 @@ else
 button Add To Workout
 if(log_privilege === "true")
   form(method='get', action='/log')
-    input(type="hidden", name="lift", value=lift)
+    input(type="hidden", name="lift_id", value=lift.wkout_id)
+    input(type="hidden", name="equip_id", value=lift.equip_id)
     button(type='submit') Log a Lift
