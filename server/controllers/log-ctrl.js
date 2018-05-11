@@ -32,5 +32,5 @@ module.exports.renderLiftForm = (req, res, next) => {
 } 
 
 module.exports.recordLift = (req, res, next) => {
-
+  console.log(req.body);
 }
