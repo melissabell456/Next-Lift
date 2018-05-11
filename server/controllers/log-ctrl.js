@@ -33,4 +33,11 @@ module.exports.renderLiftForm = (req, res, next) => {
 
 module.exports.recordLift = (req, res, next) => {
   console.log(req.body);
+  sequelize.query(
+    `INSERT INTO user_lift (id, lift_id, lift_equipment_id, user_id, equipment_id, weight, rep_count, "createdAt", "updatedAt")
+    VALUES (DEFAULT, ${req.body.lift_id}, DEFAULT, ${req.user.id}, ${req.body.equipment_id}, ${req.body.weight}, ${req.body.rep_count}, '${req.body.createdAt}', current_date)`
+  ).spread( (results, metadata) => {
+    console.log(results);
+    console.log(metadata);
+  })
 }

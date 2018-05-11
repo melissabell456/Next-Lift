@@ -2,7 +2,7 @@ extends layout
 
 block content
   form(method='get', action='/search')
-    input(type="hidden" name="column" value="name")
+    input(type="hidden" name="column" value="liftName")
     input(type="search", name='term', placeholder="Search By Name", aria-label='Search')
     button(type='submit') Search
   for form in formAttributes
