@@ -42,3 +42,18 @@ module.exports.recordLift = (req, res, next) => {
     console.log(metadata);
   })
 }
+
+module.exports.storeUserSuggestedLift = (suggestedLifts, userSourcedBool) => {
+  console.log(suggestedLifts);
+  forEach.suggestedLifts( lift => {
+    console.log("XXYY", lift);
+    sequelize.query(
+      `INSERT INTO suggested_user_lift (id, user_id, lift_id, equipment_id, weight, rep_count, user_added, "createdAt", "updatedAt")
+      VALUES (DEFAULT, ${lift.user.id}, ${lift.wkout_id}, ${lift.equip.id}, ${lift.s_weight}, ${lift_s_rep_count}, ${userSourcedBool}, current_date, current_date)`
+    ).spread( (results, metadata) => {
+      console.log(results);
+      console.log(metadata);
+      resolve(results);
+    })
+  })
+}

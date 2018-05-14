@@ -2,14 +2,4 @@ extends layout
 
 block content
   for lift in suggestedLift
-    h1 #{lift.liftname}
-    h2 Lift Suggestions:
-      p Weight: #{lift.s_weight}
-      p Reps: #{lift.s_rep_count}
-    h2 Lift Stats:
-      if(lift.createdAt != null)
-        p  Last Date Performed: #{lift.liftdate}
-        p  Weight: #{lift.weight}
-        p  Reps Completed: #{lift.rep_count}
-      else
-        p No Lift History
+    include partials/lift-card

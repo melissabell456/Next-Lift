@@ -8,10 +8,10 @@ var sequelize = new Sequelize({
   "dialect": "postgres"
   }
 );
+const { storeUserSuggestedLift } = require('./log-ctrl');
 
 // TODO: where do I add the rejects for all of these promises?
 module.exports.renderDashView = (req, res, next) => {
-  // gets user's current suggestion and checks to ensure they are not all user added lifts
   evaluateExistingSuggestion(req.user.id)
   .then( appGeneratedSuggestion => {
     if(appGeneratedSuggestion.length > 0) {
@@ -21,29 +21,28 @@ module.exports.renderDashView = (req, res, next) => {
       })
     }
     else {
-      // res.render('user-dash');
       return getLastLift(req.user.id)
       .then( userLiftData => {
         return getSplitCondition(userLiftData)
         .then( ({ upper, lower }) => {
           return generateSuggestion(upper > lower ? "lower" : "upper", req.user.id )
           .then( suggestedLift => {
-            console.log("YEEE after suggestor", suggestedLift);
-            res.render('user-dash', { suggestedLift });
+            res.render('user-dash', { suggestedLift, status: "suggestion" });
+            return storeUserSuggestedLift(suggestedLift, false)
+            .then( results => {
+              console.log(results);
+            })
           })
         })
       })
     }
-})
-  // get suggested lift, if no suggested lift:
-  // getLastLift(user_id) TODO: WHAT IF THERE IS NO LAST LIFT?
-  // parseLastLift()
-  // generateSuggestion and (lifts and rep range)
-  // display to user
-  // postSuggestion to DB
+  })
+  .catch( err => {
+    next(err);
+  })
 }
 
-
+// gets user's current suggestion and checks to ensure they are not user added lifts
 const evaluateExistingSuggestion = (user_id) => {
   return new Promise( (resolve, reject) => {
     sequelize.query(
@@ -69,7 +68,7 @@ const getCombinedSuggestion = (user_id) => {
   })
 }
 
-// ****this gets all of users most recent lifts
+// afterthis gets all data from users most recent lift to determine suggested split of next lift
 const getLastLift = (user_id) => {
   return new Promise( (resolve, reject) => {
     sequelize.query(
@@ -86,7 +85,7 @@ const getLastLift = (user_id) => {
   })
 }
   
-  // ****next I need to determine whether they were upper or lower region
+  // evaluates last lift to define split condition for suggested lift
   const getSplitCondition = (previousUserLift) => {
     return new Promise( (resolve, reject) => {
       let upperRegion = [];
@@ -99,10 +98,9 @@ const getLastLift = (user_id) => {
     })
   }
   
-  // if upper, query for 5 random lower, vice versa
+  // suggests 5 random lifts based on split condition
   const generateSuggestion = (splitCondition, user_id) => {
     return new Promise( (resolve, reject) => {
-      console.log("split condition", splitCondition);
       sequelize.query(
         `SELECT *
         FROM lift_and_equipment_combos lc
@@ -112,17 +110,17 @@ const getLastLift = (user_id) => {
         WHERE lc.region LIKE '%${splitCondition}%'
         ORDER BY RANDOM() LIMIT 5`
       ).spread( (results, metadata) => {
-        console.log("ZZZ BEFORE ADJUSTMENTS", results);
         resolve(calculateLiftStats(results));
       })
     })
   }
 
+  // calculates suggested rep and weight for lifts previously attempted
   const calculateLiftStats = (suggestedLifts) => {
     return new Promise( (resolve, reject) => {
       resolve(suggestedLifts.map( lift => {
         if(lift.createdAt !== null) {
-          lift.rep_count > 12 ? (
+          lift.rep_count >= 12 ? (
             lift.s_rep_count = 8, 
             lift.s_weight = (lift.weight + 5)) :
           (lift.s_rep_count = (lift.rep_count + 2), 
@@ -130,12 +128,10 @@ const getLastLift = (user_id) => {
           return lift;
         }
         else{
-          lift.s_rep_count = 0;
-          lift.s_weight = 0;
+          lift.s_rep_count = null;
+          lift.s_weight = null;
           return lift;
         }
       }))
     })
   }
-
-  // next I need to look at previous rep ranges and suggest new weights/reps based on that

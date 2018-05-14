@@ -1,13 +1,18 @@
 h3 #{lift.equip} #{lift.liftname}
-if(lift.liftdate != null)
-  p  Last Lift Date: #{lift.liftdate}
-  p  Weight Used: #{lift.weight}
-  p  Reps Completed: #{lift.rep_count}
-else
-  p No Lifts Logged
-button Add To Workout
 if(log_privilege === "true")
   form(method='get', action='/log')
     input(type="hidden", name="lift_id", value=lift.wkout_id)
     input(type="hidden", name="equip_id", value=lift.equip_id)
     button(type='submit') Log a Lift
+    button Add To Workout
+    p Weight: #{lift.s_weight}
+if(status === "suggestion")
+    if(lift.createdAt != null)
+      p Last Lift Date: #{lift.createdAt}
+      p Suggested Weight: #{lift.s_weight}
+      p Suggested Reps: #{lift.s_rep_count}
+      p Weight Used: #{lift.weight}
+      p Reps Completed: #{lift.rep_count}
+    else
+      p There is no history of this lift, please try for a rep range of 8-12 and log your lift for future suggestions
+      //- TODO: provide a link to similar lifts for reference where to start weight/rep wise
