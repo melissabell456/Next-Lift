@@ -9,11 +9,11 @@ var sequelize = new Sequelize({
   }
 );
 
+// TODO: where do I add the rejects for all of these promises?
 module.exports.renderDashView = (req, res, next) => {
-  console.log("rdy 2 render");
-  res.render('user-dash');
   getExistingSuggestion(req.user.id)
   .then( suggestedLift => {
+    console.log(suggestedLift);
     if(suggestedLift.length > 0) {
       console.log(suggestedLift);
       res.render('user-dash');
@@ -41,12 +41,15 @@ module.exports.renderDashView = (req, res, next) => {
   // postSuggestion to DB
 }
 
+
 const getExistingSuggestion = (user_id) => {
-  sequelize.query(
-    `SELECT * FROM suggested_user_lift
-    WHERE user_id = 1`
-  ).spread( (results, metadata) => {
-    console.log("XYZ", results);
+  return new Promise( (resolve, reject) => {
+    sequelize.query(
+      `SELECT * FROM suggested_user_lift
+      WHERE user_id = 1`
+    ).spread( (results, metadata) => {
+      resolve(results);
+    })
   })
 }
 
