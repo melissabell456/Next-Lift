@@ -30,6 +30,8 @@ module.exports.renderLiftForm = (req, res, next) => {
   })
 } 
 
+
+// TODO: prevent future dates from being logged
 module.exports.recordLift = (req, res, next) => {
   console.log(req.body);
   sequelize.query(
