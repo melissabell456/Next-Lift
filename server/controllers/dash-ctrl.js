@@ -11,18 +11,21 @@ var sequelize = new Sequelize({
 
 // TODO: where do I add the rejects for all of these promises?
 module.exports.renderDashView = (req, res, next) => {
-  getExistingSuggestion(req.user.id)
-  .then( suggestedLift => {
-    console.log(suggestedLift);
-    if(suggestedLift.length > 0) {
-      console.log(suggestedLift);
-      res.render('user-dash');
+  // gets user's current suggestion and checks to ensure they are not all user added lifts
+  console.log(req.user.id, "where is my user xxxxx");
+  evaluateExistingSuggestion(req.user.id)
+  .then( appGeneratedSuggestion => {
+    if(appGeneratedSuggestion.length > 0) {
+      getCombinedSuggestion(req.user.id)
+      .then( combinedResults => {
+        res.render('user-dash', combinedResults);
+      })
     }
     else {
-      console.log('no current suggestion', suggestedLift);
-      res.render('user-dash');
-      // return getLastLift(req.user.id)
-      // .then( userLiftData => {
+      // res.render('user-dash');
+      return getLastLift(req.user.id)
+      .then( userLiftData => {
+        console.log(userLiftData);
       //   return parseLastLift(userLiftData)
       //   .then( splitCondition => {
       //     return generateSuggestion(splitCondition)
@@ -30,7 +33,7 @@ module.exports.renderDashView = (req, res, next) => {
       //       res.render('whatever', suggestedLift);
       //     })
       //   })
-      // })
+      })
     }
 })
   // get suggested lift, if no suggested lift:
@@ -42,11 +45,27 @@ module.exports.renderDashView = (req, res, next) => {
 }
 
 
-const getExistingSuggestion = (user_id) => {
+const evaluateExistingSuggestion = (user_id) => {
+  console.log("is the user;s suggestion only user generated?");
   return new Promise( (resolve, reject) => {
     sequelize.query(
-      `SELECT * FROM suggested_user_lift
-      WHERE user_id = 1`
+      `SELECT * 
+      FROM suggested_user_lift sul
+      WHERE user_id = ${user_id} AND sul.user_added = false`
+    ).spread( (results, metadata) => {
+      resolve(results);
+    })
+  })
+}
+
+// gets all of suggested lifts including user added lifts for display in pug template
+const getCombinedSuggestion = (user_id) => {
+  console.log("going to get all suggestions not just app generated");
+  return new Promise( (resolve, reject) => {
+    sequelize.query(
+      `SELECT * 
+      FROM suggested_user_lift sul
+      WHERE user_id = ${user_id}`
     ).spread( (results, metadata) => {
       resolve(results);
     })
@@ -55,16 +74,19 @@ const getExistingSuggestion = (user_id) => {
 
 // ****this gets all of users most recent lifts
 const getLastLift = (user_id) => {
-  sequelize.query(
-    `SELECT * 
-    FROM user_log ul
-    JOIN latest_date ld ON ld.latestLift = ul.liftdate
-    LEFT JOIN lift_and_equipment_combos lc ON lc.wkout_id = ul.ul_lift_id
-      AND lc.equip_id = ul.ul_equip_id
-    WHERE liftdate = ld.latestLift
-      AND ld.user_id = ${user_id}`
-  ).spread( (results, metadata) => {
-    
+  console.log(user_id, "ZZZZ");
+  return new Promise( (resolve, reject) => {
+    sequelize.query(
+      `SELECT * 
+      FROM user_log ul
+      JOIN latest_date ld ON ld.latestLift = ul.liftdate
+      LEFT JOIN lift_and_equipment_combos lc ON lc.wkout_id = ul.ul_lift_id
+        AND lc.equip_id = ul.ul_equip_id
+      WHERE liftdate = ld.latestLift
+        AND ld.user_id = ${user_id}`
+    ).spread( (results, metadata) => {
+      resolve(results);
+    })
   })
 }
   
