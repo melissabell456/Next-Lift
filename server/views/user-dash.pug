@@ -3,6 +3,9 @@ extends layout
 block content
   for lift in suggestedLift
     h1 #{lift.liftname}
+    h2 Lift Suggestions:
+      p Weight: #{lift.s_weight}
+      p Reps: #{lift.s_rep_count}
     h2 Lift Stats:
       if(lift.createdAt != null)
         p  Last Date Performed: #{lift.liftdate}
