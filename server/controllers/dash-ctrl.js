@@ -28,8 +28,8 @@ module.exports.renderDashView = (req, res, next) => {
         .then( ({ upper, lower }) => {
           return generateSuggestion(upper > lower ? "lower" : "upper", req.user.id )
           .then( suggestedLift => {
-            console.log(suggestedLift);
-            // res.render('whatever', suggestedLift);
+            console.log("YEEE after suggestor", suggestedLift);
+            res.render('user-dash', { suggestedLift });
           })
         })
       })
@@ -96,7 +96,6 @@ const getLastLift = (user_id) => {
           upperRegion.push(lift.liftname) : lowerRegion.push(lift.liftname);
       });
       resolve({ upper: upperRegion.length, lower: lowerRegion.length });
-      // resolve({ upper: upperRegion.length, lower: lowerRegion.length })
     })
   }
   
@@ -113,8 +112,29 @@ const getLastLift = (user_id) => {
         WHERE lc.region LIKE '%${splitCondition}%'
         ORDER BY RANDOM() LIMIT 5`
       ).spread( (results, metadata) => {
-        resolve(results);
+        console.log("ZZZ BEFORE ADJUSTMENTS", results);
+        resolve(calculateLiftStats(results));
       })
+    })
+  }
+
+  const calculateLiftStats = (suggestedLifts) => {
+    return new Promise( (resolve, reject) => {
+      resolve(suggestedLifts.map( lift => {
+        if(lift.createdAt !== null) {
+          lift.rep_count > 12 ? (
+            lift.s_rep_count = 8, 
+            lift.s_weight = (lift.weight + 5)) :
+          (lift.s_rep_count = (lift.rep_count + 2), 
+          lift.s_weight = lift.weight);
+          return lift;
+        }
+        else{
+          lift.s_rep_count = 0;
+          lift.s_weight = 0;
+          return lift;
+        }
+      }))
     })
   }
 
