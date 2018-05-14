@@ -21,7 +21,7 @@ module.exports.register = (req, res, next) => {
         // using https://www.npmjs.com/package/express-flash-2 docs, but installed express-flash
         req.flash('registerMsg', `Thanks for signing up, ${user.first_name}!`);
         // Redirect kicks off a new request and makes the route in the URL match the location we have sent the user to. That's why we have to create a flash message so it will persist through the new request of the welcome route
-        res.redirect('/');
+        res.redirect('/dashboard');
       });
     })(req, res, next);
   } else {
@@ -35,6 +35,7 @@ module.exports.displayLogin = (req, res, next) => {
 };
 
 module.exports.login = (req, res, next) => {
+  console.log("here ready to log in");
   // Note we're using different strategy, this time for logging in
   passport.authenticate('local-signin', (err, user, msgObj) => {
     if (err) {  console.log(err) } //or return next(err) once handler set up in app.js
@@ -46,7 +47,7 @@ module.exports.login = (req, res, next) => {
     req.logIn(user, err => {
       if (err) { return next(err) }
       req.flash('welcomeBackMsg',`Welcome back, `);
-      res.redirect('/');
+      res.redirect('/dashboard');
     });
   })(req, res, next);
 };
