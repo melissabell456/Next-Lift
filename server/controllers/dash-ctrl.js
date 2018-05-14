@@ -12,7 +12,6 @@ var sequelize = new Sequelize({
 // TODO: where do I add the rejects for all of these promises?
 module.exports.renderDashView = (req, res, next) => {
   // gets user's current suggestion and checks to ensure they are not all user added lifts
-  console.log(req.user.id, "where is my user xxxxx");
   evaluateExistingSuggestion(req.user.id)
   .then( appGeneratedSuggestion => {
     if(appGeneratedSuggestion.length > 0) {
@@ -25,14 +24,14 @@ module.exports.renderDashView = (req, res, next) => {
       // res.render('user-dash');
       return getLastLift(req.user.id)
       .then( userLiftData => {
-        console.log(userLiftData);
-      //   return parseLastLift(userLiftData)
-      //   .then( splitCondition => {
-      //     return generateSuggestion(splitCondition)
-      //     .then( suggestedLift => {
-      //       res.render('whatever', suggestedLift);
-      //     })
-      //   })
+        return getSplitCondition(userLiftData)
+        .then( ({ upper, lower }) => {
+          return generateSuggestion(upper > lower ? "lower" : "upper", req.user.id )
+          .then( suggestedLift => {
+            console.log(suggestedLift);
+            // res.render('whatever', suggestedLift);
+          })
+        })
       })
     }
 })
@@ -46,7 +45,6 @@ module.exports.renderDashView = (req, res, next) => {
 
 
 const evaluateExistingSuggestion = (user_id) => {
-  console.log("is the user;s suggestion only user generated?");
   return new Promise( (resolve, reject) => {
     sequelize.query(
       `SELECT * 
@@ -60,7 +58,6 @@ const evaluateExistingSuggestion = (user_id) => {
 
 // gets all of suggested lifts including user added lifts for display in pug template
 const getCombinedSuggestion = (user_id) => {
-  console.log("going to get all suggestions not just app generated");
   return new Promise( (resolve, reject) => {
     sequelize.query(
       `SELECT * 
@@ -74,7 +71,6 @@ const getCombinedSuggestion = (user_id) => {
 
 // ****this gets all of users most recent lifts
 const getLastLift = (user_id) => {
-  console.log(user_id, "ZZZZ");
   return new Promise( (resolve, reject) => {
     sequelize.query(
       `SELECT * 
@@ -91,22 +87,34 @@ const getLastLift = (user_id) => {
 }
   
   // ****next I need to determine whether they were upper or lower region
-  const parseLastLift = () => {
-
+  const getSplitCondition = (previousUserLift) => {
+    return new Promise( (resolve, reject) => {
+      let upperRegion = [];
+      let lowerRegion = [];
+      previousUserLift.forEach( lift => {
+        lift.region === "upper" ?
+          upperRegion.push(lift.liftname) : lowerRegion.push(lift.liftname);
+      });
+      resolve({ upper: upperRegion.length, lower: lowerRegion.length });
+      // resolve({ upper: upperRegion.length, lower: lowerRegion.length })
+    })
   }
   
   // if upper, query for 5 random lower, vice versa
-  const generateSuggestion = () => {
-    sequelize.query(
-      `SELECT *
-      FROM lift_and_equipment_combos lc
-      LEFT JOIN user_lift ul ON lc.wkout_id = ul.lift_id
-        AND lc.equip_id = ul.equipment_id
-        AND ul.user_id = ${userid}
-      WHERE lc.region LIKE '%lower%'
-      ORDER BY RANDOM() LIMIT 5`
-    ).spread( (results, metadata) => {
-      console.log(results);
+  const generateSuggestion = (splitCondition, user_id) => {
+    return new Promise( (resolve, reject) => {
+      console.log("split condition", splitCondition);
+      sequelize.query(
+        `SELECT *
+        FROM lift_and_equipment_combos lc
+        LEFT JOIN user_lift ul ON lc.wkout_id = ul.lift_id
+          AND lc.equip_id = ul.equipment_id
+          AND ul.user_id = ${user_id}
+        WHERE lc.region LIKE '%${splitCondition}%'
+        ORDER BY RANDOM() LIMIT 5`
+      ).spread( (results, metadata) => {
+        resolve(results);
+      })
     })
   }
 
