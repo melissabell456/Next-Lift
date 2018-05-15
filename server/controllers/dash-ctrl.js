@@ -16,8 +16,8 @@ module.exports.renderDashView = (req, res, next) => {
   .then( appGeneratedSuggestion => {
     if(appGeneratedSuggestion.length > 0) {
       getCombinedSuggestion(req.user.id)
-      .then( combinedResults => {
-        res.render('user-dash', combinedResults);
+      .then( suggestedLift => {
+        res.render('user-dash', { suggestedLift, status: "suggestion"  });
       })
     }
     else {
@@ -27,9 +27,15 @@ module.exports.renderDashView = (req, res, next) => {
         .then( ({ upper, lower }) => {
           return generateSuggestion(upper > lower ? "lower" : "upper", req.user.id )
           .then( suggestedLift => {
+            let liftPosts = [];
+            suggestedLift.forEach( lift => {
+              liftPosts.push(storeUserSuggestedLift(lift, false, req.user.id))
+            })
             res.render('user-dash', { suggestedLift, status: "suggestion" });
-            return storeUserSuggestedLift(suggestedLift, false)
+            Promise.all(liftPosts)
+            // return storeUserSuggestedLift(suggestedLift, false)
             .then( results => {
+              // res.end();
               console.log(results);
             })
           })
