@@ -42,19 +42,19 @@
         }
       }
 
-1. Run ``` node server/database/build_db.js ``` to build database (TODO: create script)
+1. Run ```npm run build-db```
 1. Set up below views in pgAdmin
   ```
 CREATE VIEW lift_and_equipment_combos
 AS
 SELECT 
-  l.id AS wkout_id,
-  l.name AS liftName,
+  l.id as wkout_id,
+  l.name as liftName,
   l.motion,
   l.type,
   l.region,
-  e.id AS equip_id,
-  e.name AS equip
+  e.id as equip_id,
+  e.name as equip
 FROM lifts l
 JOIN lift_equipment le ON le.lift_id = l.id
 JOIN equipment e ON le.equipment_id = e.id
