@@ -1,7 +1,14 @@
 'use strict';
 
-const sequelize = require('sequelize');
+const Sequelize = require('sequelize');
 const models = require('../models/');
+const sequelize = new Sequelize({
+  "username": "Melis",
+  "password": "postgres",
+  "database": "final-wrkout",
+  "dialect": "postgres"
+  }
+);
 
 const lifts = require('./json/lifts');
 const muscles = require('./json/muscle-groups');
