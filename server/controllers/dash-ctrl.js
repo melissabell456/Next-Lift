@@ -13,6 +13,8 @@ const { storeUserSuggestedLift } = require('./log-ctrl');
 // TODO: where do I add the rejects for all of these promises? does this need a res.end? JOE
 // TODO: what if a user doesn't have any previous lifts at all? 
 // TODO: what if a user's suggestion is already generated, but the user has logged a lift more recently?.. could check date on suggestion to see if it is newer than the suggested lift. if so, regenerate
+// TODO: BOTH new and old suggestions need to be joined with user's logged lifts prior to printing
+// TODO: new suggestions need to go get the user requested lifts too and should have access to that boolean.
 module.exports.renderDashView = (req, res, next) => {
   evaluateExistingSuggestion(req.user.id)
   .then( appGeneratedSuggestion => {
