@@ -1,18 +1,21 @@
 'use strict'
 
-console.log('hello');
-
-// document.getElementById('logSuggestedBtn').addEventListener("click", () => {
-//   var forms= document.getElementsByTagName("form");
-  
-//   for(let i=0;i<forms.length;i++){
-//     console.log(forms[i]);
-//       // forms[i].submit();
-//   }
-
+// $(document).on('click', '#logSuggestedBtn', event => {
+//   let forms = $('.logLiftForm');
+//   console.log(forms);
+//   $.each(forms, function(i, form) {
+//     console.log(form);
+//     form.submit();
 //   });
 
-$('#logSuggestedBtn').on('click', event => {
-  let forms = $("form");
-  console.log(forms);
-});
+// });
+
+// let deleteSavedBtns = document.getElementById("logSuggestedBtn");
+// deleteSavedBtns.addEventListener('click', (e) => {
+//     let forms = document.getElementsByClassName('logLiftForm');
+//     console.log(forms);
+//     Array.from(forms).forEach((form) => {
+//       console.log(form);
+//       form.submit()
+//     });
+// });

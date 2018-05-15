@@ -69,8 +69,11 @@ const getCombinedSuggestion = (user_id) => {
     sequelize.query(
       `SELECT * 
       FROM suggested_user_lift sul
-      LEFT JOIN lift_and_equipment_combos lc ON sul.lift_id = lc.wkout_id 
-      AND sul.equipment_id = lc.equip_id
+      LEFT JOIN lift_and_equipment_combos lc ON sul.lift_id = lc.wkout_id
+        AND sul.equipment_id = lc.equip_id
+	    LEFT JOIN user_log ul ON sul.lift_id = ul.ul_lift_id 
+	      AND sul.equipment_id = ul.ul_equip_id
+	      AND sul.user_id = ul.ul_user_id
       WHERE user_id = ${user_id}`
     ).spread( (results, metadata) => {
       resolve(results);
@@ -108,6 +111,7 @@ const getLastLift = (user_id) => {
     })
   }
   
+  // TODO: Conditional should only be getting the user_lift with the max date...
   // suggests 5 random lifts based on split condition
   const generateSuggestion = (splitCondition, user_id) => {
     return new Promise( (resolve, reject) => {
@@ -125,8 +129,11 @@ const getLastLift = (user_id) => {
     })
   }
 
+
+
   // calculates suggested rep and weight for lifts previously attempted
   const calculateLiftStats = (suggestedLifts) => {
+    console.log(suggestedLifts);
     return new Promise( (resolve, reject) => {
       resolve(suggestedLifts.map( lift => {
         if(lift.createdAt !== null) {
