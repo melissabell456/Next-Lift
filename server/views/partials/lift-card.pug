@@ -1,4 +1,4 @@
-h3 #{lift.equip} #{lift.liftname}
+h3 #{lift.liftname} (#{lift.equip})
 if(log_privilege === "true")
   form(method='get', action='/log')
     input(type="hidden", name="lift_id", value=lift.wkout_id)
@@ -7,8 +7,8 @@ if(log_privilege === "true")
     button Add To Workout
     p Weight: #{lift.s_weight}
 if(status === "suggestion")
-    if(lift.createdAt != null)
-      p Last Lift Date: #{lift.createdAt}
+    if(lift.liftdate != null)
+      p Last Lift Date: #{lift.liftdate}
       p Suggested Weight: #{lift.s_weight}
       p Suggested Reps: #{lift.s_rep_count}
       p Weight Used: #{lift.weight}

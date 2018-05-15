@@ -10,7 +10,9 @@ var sequelize = new Sequelize({
 );
 const { storeUserSuggestedLift } = require('./log-ctrl');
 
-// TODO: where do I add the rejects for all of these promises?
+// TODO: where do I add the rejects for all of these promises? does this need a res.end? JOE
+// TODO: what if a user doesn't have any previous lifts at all? 
+// TODO: what if a user's suggestion is already generated, but the user has logged a lift more recently?.. could check date on suggestion to see if it is newer than the suggested lift. if so, regenerate
 module.exports.renderDashView = (req, res, next) => {
   evaluateExistingSuggestion(req.user.id)
   .then( appGeneratedSuggestion => {
@@ -33,10 +35,8 @@ module.exports.renderDashView = (req, res, next) => {
             })
             res.render('user-dash', { suggestedLift, status: "suggestion" });
             Promise.all(liftPosts)
-            // return storeUserSuggestedLift(suggestedLift, false)
             .then( results => {
               // res.end();
-              console.log(results);
             })
           })
         })
@@ -67,6 +67,8 @@ const getCombinedSuggestion = (user_id) => {
     sequelize.query(
       `SELECT * 
       FROM suggested_user_lift sul
+      LEFT JOIN lift_and_equipment_combos lc ON sul.lift_id = lc.wkout_id 
+      AND sul.equipment_id = lc.equip_id
       WHERE user_id = ${user_id}`
     ).spread( (results, metadata) => {
       resolve(results);
