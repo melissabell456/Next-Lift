@@ -19,6 +19,8 @@ div(class="col-sm-6")
     if(status === "userDash")
       form(method="get" action="/update-entry")
         input(type="hidden" name="user_lift_id" value=`${lift.user_lift_id}`)
-        //- input(type="hidden" name="user_lift_id" value=`hello`)
         button(class="btn btn-secondary" type="submit") Edit
+      form(method='post', action='/delete-entry')
+        input(type="hidden" class="form-control" name="user_lift_id" value=lift.user_lift_id)
+        button(type='submit' class="btn btn-warning") Delete
 //- TODO: provide a link to similar lifts for reference where to start weight/rep wise

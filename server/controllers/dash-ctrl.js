@@ -84,3 +84,13 @@ module.exports.updateUserEntry = (req, res, next) => {
     })
   })
 }
+
+module.exports.deleteUserEntry = (req, res, next) => {
+  console.log(req.body);
+  sequelize.query(
+    `DELETE FROM user_lift ul
+    WHERE ul.id = ${req.body.user_lift_id}`
+  ).spread( (results, metadata) => {
+      res.redirect('back');
+  })
+}
