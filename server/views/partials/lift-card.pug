@@ -1,17 +1,19 @@
-h3 #{lift.liftname} (#{lift.equip})
-if(log_privilege === "true")
-  form(method='get', action='/log')
-    input(type="hidden", name="lift_id", value=lift.wkout_id)
-    input(type="hidden", name="equip_id", value=lift.equip_id)
-    button(type='submit') Log a Lift
-    //- button Add To Workout
+div(class="col-sm-6")
+  h3 #{lift.liftname} (#{lift.equip})
+  if(log_privilege === "true")
+    form(method='get', action='/log')
+      input(type="hidden", name="lift_id", value=lift.wkout_id)
+      input(type="hidden", name="equip_id", value=lift.equip_id)
+      button(type='submit', class="btn btn-warning") Log a Lift
+      //- button Add To Workout
 
-if(lift.liftdate === null)
-  p There is no history of this lift, please try for a rep range of 8-12 and log your lift for future suggestions
-else
-  p Last Lift Date: #{lift.liftdate}
-  p Suggested Weight: #{lift.s_weight}
-  p Suggested Reps: #{lift.s_rep_count}
-  p Weight Used: #{lift.maxweight}
-  p Reps Completed: #{lift.maxreps}
-    //- TODO: provide a link to similar lifts for reference where to start weight/rep wise
+  if(lift.liftdate === null)
+    p There is no history of this lift, please try for a rep range of 8-12 and log your lift for future suggestions
+  else
+    p Last Lift Date: #{lift.liftdate}
+    if(status === "suggestion")
+      p Suggested Weight: #{lift.s_weight}
+      p Suggested Reps: #{lift.s_rep_count}
+    p Weight Used: #{lift.maxweight}
+    p Reps Completed: #{lift.maxreps}
+      //- TODO: provide a link to similar lifts for reference where to start weight/rep wise

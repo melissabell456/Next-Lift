@@ -2,28 +2,30 @@ extends layout
 
 block content
 
-  //- if(status === "logSuggested")
-  //-   button(type='submit' id="logSuggestedBtn") Record Lift
-  for lift in results
-    h1 #{lift.equip} #{lift.liftname}
-    h2 Lift Stats:
-      if(lift.liftdate != null)
-        p  Last Date Performed: #{lift.liftdate}
-        p  Weight: #{lift.maxweight}
-        p  Reps Completed: #{lift.maxreps}
-      else
-        p No Lift History
-      h2 Log a new lift:
-      form(method='post', action='/log', class="logLiftForm")
-        p Weight:
-          input(type="number", min="0" name="weight")
-        p Reps Completed:
-          input(type="number", min="1" name="rep_count")
-        input(type="hidden" name="lift_id" value=lift.wkout_id)
-        input(type="hidden" name="equipment_id" value=lift.equip_id)
-        button(type='submit') Record Lift
-        if(status === "logSuggested")
-          input(type="hidden" name="suggested" value="true")
-        if(status !== "logSuggested")
-          p Date Completed:
-            input(type="date" name="createdAt")
+  div(class="container")
+    div(class="row")
+      for lift in results
+        div(class="col-sm-6")
+          h1 #{lift.equip} #{lift.liftname}
+          h2 Lift Stats:
+            if(lift.liftdate != null)
+              p  Last Date Performed: #{lift.liftdate}
+              p  Weight: #{lift.maxweight}
+              p  Reps Completed: #{lift.maxreps}
+            else
+              p No Lift History
+            h2 Log a new lift:
+            div(class="form-group")
+              form(method='post', action='/log', class="logLiftForm")
+                p Weight:
+                  input(type="number" class="form-control" min="0" name="weight")
+                p Reps Completed:
+                  input(type="number" class="form-control" min="1" name="rep_count")
+                input(type="hidden" class="form-control" name="lift_id" value=lift.wkout_id)
+                input(type="hidden" class="form-control" name="equipment_id" value=lift.equip_id)
+                if(status === "logSuggested")
+                  input(type="hidden" class="form-control" name="suggested" value="true")
+                if(status !== "logSuggested")
+                  p Date Completed:
+                    input(type="date" class="form-control" name="createdAt")
+                button(type='submit' class="btn btn-warning") Record Lift

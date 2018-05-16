@@ -4,8 +4,8 @@ module.exports = (sequelize, DataTypes) => {
     user_id: DataTypes.INTEGER,
     lift_id: DataTypes.INTEGER,
     equipment_id: DataTypes.INTEGER,
-    weight: DataTypes.INTEGER,
-    rep_count: DataTypes.INTEGER,
+    s_weight: DataTypes.INTEGER,
+    s_rep_count: DataTypes.INTEGER,
     user_added: DataTypes.BOOLEAN
   }, { tableName: 'suggested_user_lift'});
   Suggested_User_Lift.associate = function(models) {

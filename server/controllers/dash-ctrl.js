@@ -10,8 +10,7 @@ var sequelize = new Sequelize({
 );
 const { storeUserSuggestedLift } = require('./log-ctrl');
 
-// TODO: where do I add the rejects for all of these promises? does this need a res.end? JOE
-// TODO: what if a user doesn't have any previous lifts at all? 
+// TODO: where do I add the rejects for all of these promises? does this need a res.end? JOE 
 // TODO: what if a user's suggestion is already generated, but the user has logged a lift more recently?.. could check date on suggestion to see if it is newer than the suggested lift. if so, regenerate
 // TODO: BOTH new and old suggestions need to be joined with user's logged lifts prior to printing
 // TODO: new suggestions need to go get the user requested lifts too and should have access to that boolean.
@@ -20,8 +19,13 @@ module.exports.renderDashView = (req, res, next) => {
   .then( appGeneratedSuggestion => {
     if(appGeneratedSuggestion.length > 0) {
       getCombinedSuggestion(req.user.id)
-      .then( suggestedLift => {
-        res.render('user-dash', { suggestedLift, status: "suggestion"  });
+      .then( combinedSuggestedLift => {
+        // console.log(combinedSuggestedLift, "does this have new log?");
+        calculateLiftStats(combinedSuggestedLift)
+        .then( suggestedLift => {
+          console.log(suggestedLift, "neww?");
+          res.render('user-dash', { suggestedLift, status: "suggestion"  });
+        })
       })
     }
     else {
@@ -29,12 +33,14 @@ module.exports.renderDashView = (req, res, next) => {
       .then( userLiftData => {
         return getSplitCondition(userLiftData)
         .then( ({ upper, lower }) => {
+          console.log("upper", upper, "lower", lower);
           return generateSuggestion(upper > lower ? "lower" : "upper", req.user.id )
           .then( suggestedLift => {
             let liftPosts = [];
             suggestedLift.forEach( lift => {
               liftPosts.push(storeUserSuggestedLift(lift, false, req.user.id))
             })
+            console.log(suggestedLift, "does this include liftdate?");
             res.render('user-dash', { suggestedLift, status: "suggestion" });
             Promise.all(liftPosts)
             .then( results => {
@@ -76,6 +82,7 @@ const getCombinedSuggestion = (user_id) => {
 	      AND sul.user_id = ul.ul_user_id
       WHERE user_id = ${user_id}`
     ).spread( (results, metadata) => {
+      console.log(results, "WILL SEND TO DASH");
       resolve(results);
     })
   })
@@ -114,6 +121,7 @@ const getLastLift = (user_id) => {
   // TODO: Conditional should only be getting the user_lift with the max date...
   // suggests 5 random lifts based on split condition
   const generateSuggestion = (splitCondition, user_id) => {
+    console.log(splitCondition ,"SPLITZZZ");
     return new Promise( (resolve, reject) => {
       sequelize.query(
         `SELECT *
@@ -121,6 +129,9 @@ const getLastLift = (user_id) => {
         LEFT JOIN user_lift ul ON lc.wkout_id = ul.lift_id
           AND lc.equip_id = ul.equipment_id
           AND ul.user_id = ${user_id}
+        LEFT JOIN user_log ulo ON lc.wkout_id = ulo.ul_lift_id
+          AND lc.equip_id = ulo.ul_equip_id
+          AND ulo.ul_user_id = ${user_id}
         WHERE lc.region LIKE '%${splitCondition}%'
         ORDER BY RANDOM() LIMIT 5`
       ).spread( (results, metadata) => {
@@ -133,15 +144,14 @@ const getLastLift = (user_id) => {
 
   // calculates suggested rep and weight for lifts previously attempted
   const calculateLiftStats = (suggestedLifts) => {
-    console.log(suggestedLifts);
     return new Promise( (resolve, reject) => {
       resolve(suggestedLifts.map( lift => {
         if(lift.createdAt !== null) {
-          lift.rep_count >= 12 ? (
+          lift.maxreps >= 12 ? (
             lift.s_rep_count = 8, 
-            lift.s_weight = (lift.weight + 5)) :
-          (lift.s_rep_count = (lift.rep_count + 2), 
-          lift.s_weight = lift.weight);
+            lift.s_weight = (lift.maxweight + 5)) :
+          (lift.s_rep_count = (lift.maxreps + 2), 
+          lift.s_weight = lift.maxweight);
           return lift;
         }
         else{
