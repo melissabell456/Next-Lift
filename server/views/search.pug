@@ -11,7 +11,7 @@ block content
         for form in formAttributes
           form(method='get' action='/search')
               input(type="hidden" name="column" value=form.column)
-              input(type="submit" name="term" value=form.value class="btn btn-warning form-control mr-sm-2")
+              input(type="submit" class="btn btn-warning form-control mr-sm-2" name="term" value=form.value)
         if(state === "query")
           div(class="container")
             div(class="row")

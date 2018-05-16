@@ -11,8 +11,9 @@ div(class="col-sm-6")
     p There is no history of this lift, please try for a rep range of 8-12 and log your lift for future suggestions
   else
     p Last Lift Date: #{lift.liftdate}
-    p Suggested Weight: #{lift.s_weight}
-    p Suggested Reps: #{lift.s_rep_count}
+    if(status === "suggestion")
+      p Suggested Weight: #{lift.s_weight}
+      p Suggested Reps: #{lift.s_rep_count}
     p Weight Used: #{lift.maxweight}
     p Reps Completed: #{lift.maxreps}
       //- TODO: provide a link to similar lifts for reference where to start weight/rep wise
