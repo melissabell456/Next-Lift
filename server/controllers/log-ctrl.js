@@ -22,7 +22,9 @@ module.exports.renderLiftForm = (req, res, next) => {
       AND ul.liftDate = to_char(u."createdAt", 'MM-DD-YYYY')
     WHERE (ul.ul_user_id = ${req.user.id} OR ul.ul_user_id IS NULL)
       AND ap.wkout_id = ${liftId}
-	    AND ap.equip_id = ${equipId}`
+      AND ap.equip_id = ${equipId}
+      ORDER BY ul.liftDate desc
+      LIMIT 1`
   ).spread( (results, metadata) => {
     res.render('log-lift-form', { results } );
   })

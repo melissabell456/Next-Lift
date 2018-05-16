@@ -1,7 +1,10 @@
 extends layout
 
 block content
-  for lift in suggestedLift
-    include partials/lift-card
-  button 
+
+  div(class="container")
+    div(class="row")
+      for lift in suggestedLift
+        include partials/lift-card
+  button(class="btn btn-warning")
     a(href='/logSuggested') Log My Lift
