@@ -42,7 +42,7 @@ module.exports.renderSuggestedLiftForm = (req, res, next) => {
 	      AND sul.user_id = ul.ul_user_id
       WHERE user_id = ${req.user.id}`
     ).spread( (results, metadata) => {
-      res.render('log-lift-form', { results, status: "logSuggested" } );
+      res.render('suggested-lift-form', { results, status: "logSuggested" } );
     })
   })
 }
@@ -63,7 +63,6 @@ const removeFromSuggested = (req, res, next) => {
 // TODO: prevent future dates from being logged
 module.exports.recordLift = (req, res, next) => {
   return new Promise( (resolve, reject) => {
-    console.log("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", req.body);
     let createdDate = req.body.createdAt === undefined ? 'now()' : req.body.createdAt;
     sequelize.query(
       `INSERT INTO user_lift (id, lift_id, lift_equipment_id, user_id, equipment_id, weight, rep_count, "createdAt", "updatedAt")
@@ -90,13 +89,23 @@ module.exports.storeUserSuggestedLift = (lift, userSourcedBool, user_id) => {
 
 module.exports.recordSuggestedLifts = (req, res, next) => {
   console.log("THESE SHOULD BE ADDED", req.body);
-  sequelize.query(
-    `INSERT INTO user_lift (id, lift_id, lift_equipment_id, user_id, equipment_id, weight, rep_count, "createdAt", "updatedAt")
-    VALUES (DEFAULT, ${req.body.lift_id}, DEFAULT, ${req.user.id}, ${req.body.equipment_id}, ${req.body.weight}, ${req.body.rep_count}, (('${req.body.createdAt}') AT TIME ZONE 'UTC'), current_date)`
-  ).spread( (results, metadata) => {
-    // TODO give feedback, redirect user
-    console.log(results);
-    console.log(metadata);
-  })
+  let liftIds = req.body.lift_id;
+  let userEntries = [];
+  for(let i=0; i<liftIds.length; i++) {
+    userEntries.push({
+      "lift_id": liftIds[i],
+      "rep_count": req.body.rep_count[i],
+      "weight": req.body.weight[i],
+      "equip_id": req.body.equipment_id[i]
+    });
+    sequelize.query(
+      `INSERT INTO user_lift (id, lift_id, lift_equipment_id, user_id, equipment_id, weight, rep_count, "createdAt", "updatedAt")
+      VALUES (DEFAULT, ${liftIds[i]}, DEFAULT, ${req.user.id}, ${req.body.equipment_id[i]}, ${req.body.weight[i]}, ${req.body.rep_count[i]}, (('${req.body.createdAt}') AT TIME ZONE 'UTC'), current_date)`
+    ).spread( (results, metadata) => {
+      // TODO give feedback, redirect user
+      console.log(results);
+      // console.log(metadata);
+    })
+  }
 }
 

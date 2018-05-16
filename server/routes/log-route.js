@@ -7,5 +7,6 @@ const { renderLiftForm, recordLift, renderSuggestedLiftForm, recordSuggestedLift
 logRoute.get('/log', renderLiftForm);
 logRoute.post('/log', recordLift);
 logRoute.get('/logSuggested', renderSuggestedLiftForm);
+logRoute.post('/logSuggested', recordSuggestedLifts);
 
 module.exports = logRoute;
