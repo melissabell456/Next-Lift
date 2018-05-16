@@ -61,7 +61,6 @@ const removeFromSuggested = ({ lift_id, user_id, equip_id }) => {
 
 // TODO: prevent future dates from being logged
 module.exports.recordLift = (req, res, next) => {
-  console.log(req.body, "ready to add????");
   return new Promise( (resolve, reject) => {
     sequelize.query(
       `INSERT INTO user_lift (id, lift_id, lift_equipment_id, user_id, equipment_id, weight, rep_count, "createdAt", "updatedAt")

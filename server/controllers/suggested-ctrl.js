@@ -77,7 +77,6 @@ const getCombinedSuggestion = (user_id) => {
 	      AND sul.user_id = ul.ul_user_id
       WHERE user_id = ${user_id}`
     ).spread( (results, metadata) => {
-      console.log(results, "WILL SEND TO DASH");
       resolve(results);
     })
   })

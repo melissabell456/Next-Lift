@@ -1,0 +1,15 @@
+extends layout
+
+block content
+  h1 Edit
+  for lift in results
+    p #{lift.liftname}
+    form(method='post', action='/update-entry')
+      p Update Weight:
+        input(placeholder=lift.maxweight type="number" class="form-control" min="0" name="weight")
+      p Update Reps Completed:
+        input(placeholder=lift.maxreps type="number" class="form-control" min="1" name="rep_count")
+      p Change Date:
+        input(type="date" class="form-control" name="createdAt")
+        input(type="hidden" class="form-control" name="user_lift_id" value=lift.user_lift_id)
+        button(type='submit' class="btn btn-warning") Update
