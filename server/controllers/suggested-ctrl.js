@@ -11,20 +11,15 @@ var sequelize = new Sequelize({
 const { storeUserSuggestedLift } = require('./log-ctrl');
 
 // TODO: where do I add the rejects for all of these promises? does this need a res.end? JOE 
-// TODO: what if a user's suggestion is already generated, but the user has logged a lift more recently?.. could check date on suggestion to see if it is newer than the suggested lift. if so, regenerate
-// TODO: BOTH new and old suggestions need to be joined with user's logged lifts prior to printing
-// TODO: new suggestions need to go get the user requested lifts too and should have access to that boolean.
-module.exports.renderDashView = (req, res, next) => {
+module.exports.renderView = (req, res, next) => {
   evaluateExistingSuggestion(req.user.id)
   .then( appGeneratedSuggestion => {
     if(appGeneratedSuggestion.length > 0) {
       getCombinedSuggestion(req.user.id)
       .then( combinedSuggestedLift => {
-        // console.log(combinedSuggestedLift, "does this have new log?");
         calculateLiftStats(combinedSuggestedLift)
         .then( suggestedLift => {
-          console.log(suggestedLift, "neww?");
-          res.render('user-dash', { suggestedLift, status: "suggestion"  });
+          res.render('next-suggested', { suggestedLift, status: "suggestion"  });
         })
       })
     }
@@ -41,7 +36,7 @@ module.exports.renderDashView = (req, res, next) => {
               liftPosts.push(storeUserSuggestedLift(lift, false, req.user.id))
             })
             console.log(suggestedLift, "does this include liftdate?");
-            res.render('user-dash', { suggestedLift, status: "suggestion" });
+            res.render('next-suggested', { suggestedLift, status: "suggestion" });
             Promise.all(liftPosts)
             .then( results => {
               // res.end();
@@ -121,7 +116,6 @@ const getLastLift = (user_id) => {
   // TODO: Conditional should only be getting the user_lift with the max date...
   // suggests 5 random lifts based on split condition
   const generateSuggestion = (splitCondition, user_id) => {
-    console.log(splitCondition ,"SPLITZZZ");
     return new Promise( (resolve, reject) => {
       sequelize.query(
         `SELECT *

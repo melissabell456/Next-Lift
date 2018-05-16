@@ -1,19 +1,17 @@
 extends layout
 
 block content
-  div(class="navbar navbar-light bg-light")
-    div(class="form-inline")
-      form(method='get', action='/search')
-        input(type="hidden" name="column" value="liftName")
-        input(type="search", name='term', placeholder="Search By Name", aria-label='Search' class="form-control mr-sm-2")
-        button(type='submit' class="btn btn-warning form-control mr-sm-2") Search
-
-        for form in formAttributes
-          form(method='get' action='/search')
-              input(type="hidden" name="column" value=form.column)
-              input(type="submit" class="btn btn-warning form-control mr-sm-2" name="term" value=form.value)
-        if(state === "query")
-          div(class="container")
-            div(class="row")
-              for lift in results
-                include partials/lift-card
+  
+  form(method="get" action="/search")
+    input(type="hidden" name="column" value="liftName")
+    input(type="search" name="term" placeholder="Search By Name")
+    button(class="btn btn-secondary" type="submit") Search
+  for form in formAttributes
+    form(method="get" action="/search")
+      input(type="hidden" name="column" value=`${form.column}`)
+      input(class="btn btn-secondary" type="submit" name="term" value=`${form.value}`)
+  if(state === "query")
+    div(class="container")
+      div(class="row")
+        for lift in results
+          include partials/lift-card

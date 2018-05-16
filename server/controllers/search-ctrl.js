@@ -8,13 +8,23 @@ var sequelize = new Sequelize({
   "dialect": "postgres"
   }
 );
-const formAttributes = [{column: "type", value:"isolation"}, {column:"type", value:"compound"}, {column: "motion", value:"pull"}, {column:"motion", value:"push"}, {column:"region", value:"upper"}, {column:"region", value:"lower"}];
+const formAttributes = [
+  {column: "type", value:"isolation"}, 
+  {column:"type", value:"compound"}, 
+  {column: "motion", value:"pull"}, 
+  {column:"motion", value:"push"}, 
+  {column:"region", value:"upper"}, 
+  {column:"region", value:"lower"}
+];
 
 module.exports.renderSearchView = (req, res, next) => {
+  console.log(formAttributes);
   res.render('search', { formAttributes });
 }
 
 module.exports.searchLiftsTable = (req, res, next) => {
+  console.log(req.query.column, "req.query.term");
+  console.log(req.query.term, "req.query.term");
   sequelize.query(
     `SELECT * 
     FROM lift_and_equipment_combos ap

@@ -21,7 +21,7 @@ module.exports.register = (req, res, next) => {
         // using https://www.npmjs.com/package/express-flash-2 docs, but installed express-flash
         req.flash('registerMsg', `Thanks for signing up, ${user.first_name}!`);
         // Redirect kicks off a new request and makes the route in the URL match the location we have sent the user to. That's why we have to create a flash message so it will persist through the new request of the welcome route
-        res.redirect('/dashboard');
+        res.redirect('/next-lift');
       });
     })(req, res, next);
   } else {
@@ -31,7 +31,7 @@ module.exports.register = (req, res, next) => {
 
 // logging in existing users
 module.exports.displayLogin = (req, res, next) => {
-  res.render('login');
+  res.render('auth');
 };
 
 module.exports.login = (req, res, next) => {
@@ -41,13 +41,13 @@ module.exports.login = (req, res, next) => {
     if (err) {  console.log(err) } //or return next(err) once handler set up in app.js
     if (!user) {
       console.log("no user YYY");
-      return res.render('index', msgObj)
+      return res.render('login', msgObj)
     }
 
     req.logIn(user, err => {
       if (err) { return next(err) }
       req.flash('welcomeBackMsg',`Welcome back, `);
-      res.redirect('/dashboard');
+      res.redirect('/next-lift');
     });
   })(req, res, next);
 };
