@@ -1,4 +1,7 @@
 extends layout
 
 block content
-  h1 wow!
+  div(class="container")
+    div(class="row")
+      for lift in userLogs
+        include partials/lift-card
