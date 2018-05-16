@@ -47,13 +47,12 @@ module.exports.renderSuggestedLiftForm = (req, res, next) => {
   })
 }
 
-const removeFromSuggested = (req, res, next) => {
-  console.log("YXY ready to remove from suggested", req.body);
+const removeFromSuggested = ({ lift_id, user_id, equip_id }) => {
   sequelize.query(
     `DELETE FROM suggested_user_lift sul
-      WHERE sul.user_id = ${req.user.id}
-        AND sul.equipment_id = ${req.body.equipment_id}
-        AND sul.lift_id = ${req.body.lift_id}`
+      WHERE sul.user_id = ${user_id}
+        AND sul.equipment_id = ${equip_id}
+        AND sul.lift_id = ${lift_id}`
   ).spread( (results, metadata) => {
     console.log(results, "of deletionx");
     console.log(metadata, "of metadata deletionx");
@@ -63,20 +62,17 @@ const removeFromSuggested = (req, res, next) => {
 // TODO: prevent future dates from being logged
 module.exports.recordLift = (req, res, next) => {
   return new Promise( (resolve, reject) => {
-    let createdDate = req.body.createdAt === undefined ? 'now()' : req.body.createdAt;
     sequelize.query(
       `INSERT INTO user_lift (id, lift_id, lift_equipment_id, user_id, equipment_id, weight, rep_count, "createdAt", "updatedAt")
       VALUES (DEFAULT, ${req.body.lift_id}, DEFAULT, ${req.user.id}, ${req.body.equipment_id}, ${req.body.weight}, ${req.body.rep_count}, (('${createdDate}') AT TIME ZONE 'UTC'), now())`
     ).spread( (results, metadata) => {
       // TODO give feedback, redirect user
-      req.body.suggested === "true" ? removeFromSuggested(req, res, next) : console.log("not applicable");
       resolve(results);
     })
   })
 }
 
 module.exports.storeUserSuggestedLift = (lift, userSourcedBool, user_id) => {
-  console.log(lift, "YYYYY");
   return new Promise( (resolve, reject) => {
       sequelize.query(
         `INSERT INTO suggested_user_lift (id, user_id, lift_id, equipment_id, weight, rep_count, user_added, "createdAt", "updatedAt")
@@ -87,25 +83,38 @@ module.exports.storeUserSuggestedLift = (lift, userSourcedBool, user_id) => {
   })
 }
 
-module.exports.recordSuggestedLifts = (req, res, next) => {
-  console.log("THESE SHOULD BE ADDED", req.body);
+module.exports.parseSuggestedFormEntry = (req, res, next) => {
   let liftIds = req.body.lift_id;
-  let userEntries = [];
+  let recordEntries = [];
+  let removeSuggestedRecords = [];
   for(let i=0; i<liftIds.length; i++) {
-    userEntries.push({
+    let liftStats = {
       "lift_id": liftIds[i],
+      "user_id": req.user.id,
+      "equip_id": req.body.equipment_id[i],
       "rep_count": req.body.rep_count[i],
       "weight": req.body.weight[i],
-      "equip_id": req.body.equipment_id[i]
-    });
-    sequelize.query(
-      `INSERT INTO user_lift (id, lift_id, lift_equipment_id, user_id, equipment_id, weight, rep_count, "createdAt", "updatedAt")
-      VALUES (DEFAULT, ${liftIds[i]}, DEFAULT, ${req.user.id}, ${req.body.equipment_id[i]}, ${req.body.weight[i]}, ${req.body.rep_count[i]}, (('${req.body.createdAt}') AT TIME ZONE 'UTC'), current_date)`
-    ).spread( (results, metadata) => {
-      // TODO give feedback, redirect user
-      console.log(results);
-      // console.log(metadata);
-    })
+      "createdAt": req.body.createdAt
+    };
+    recordEntries.push(recordSuggestedLift(liftStats));
+    removeSuggestedRecords.push(removeFromSuggested(liftStats));
   }
+  Promise.all(recordEntries)
+  .then( results => {
+    Promise.all(removeSuggestedRecords)
+    .then( results => {
+      console.log("deleted", results);
+    })
+  })
 }
 
+const recordSuggestedLift = ( { lift_id, user_id, equip_id, weight, rep_count, createdAt } ) => {
+  sequelize.query(
+    `INSERT INTO user_lift (id, lift_id, lift_equipment_id, user_id, equipment_id, weight, rep_count, "createdAt", "updatedAt")
+    VALUES (DEFAULT, ${lift_id}, DEFAULT, ${user_id}, ${equip_id}, ${weight}, ${rep_count}, (('${createdAt}') AT TIME ZONE 'UTC'), current_date)`
+  ).spread( (results, metadata) => {
+    // TODO give feedback, redirect user
+    return results;
+    // console.log(metadata);
+  })
+}
