@@ -6,7 +6,8 @@ div(class="col-sm-6")
       input(type="hidden", name="equip_id", value=lift.equip_id)
       button(type='submit', class="btn btn-warning") Log a Lift
       //- TODO functionality to add to workout
-
+      p Primary Muscle: #{lift.primary_muscle}
+      p Other Muscles Targeted: #{lift.associated_muscles}
   if(lift.liftdate === null)
     p There is no history of this lift, please try for a rep range of 8-12 and log your lift for future suggestions
   else
