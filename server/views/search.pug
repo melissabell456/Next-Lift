@@ -1,17 +1,18 @@
 extends layout
 
 block content
-  
-  form(method="get" action="/search")
-    input(type="hidden" name="column" value="liftName")
-    input(type="search" name="term" placeholder="Search By Name")
-    button(class="btn btn-secondary" type="submit") Search
-  for form in formAttributes
+
+  nav(class="navbar navbar-expand-lg navbar-light bg-light")  
     form(method="get" action="/search")
-      input(type="hidden" name="column" value=`${form.column}`)
-      input(class="btn btn-secondary" type="submit" name="term" value=`${form.value}`)
+      input(type="hidden" name="column" value="liftName")
+      input(type="search" name="term" placeholder="Search By Name")
+      button(class="btn btn-secondary search-btn" type="submit") Search
+    for form in formAttributes
+      form(method="get" action="/search")
+        input(type="hidden" name="column" value=`${form.column}`)
+        input(class="btn btn-secondary filter-btn" type="submit" name="term" value=`${form.value}`)
   if(state === "query")
-    div(class="container")
+    div(class="container card-holder")
       div(class="row")
         for lift in results
           include partials/lift-card

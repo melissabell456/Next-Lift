@@ -107,6 +107,13 @@ JOIN lifts l ON l.id = lm.lift_id
 WHERE lm.primary = true
 ```
 
+## Technologies used:
+ 1. Node.JS
+ 2. Express
+ 3. Sequelize (for db/model build)
+ 4. PostgreSQL
+ 5. Pug
+
 ## API Endpoints
 
 1. Use ```search``` route for filtering lift db: 

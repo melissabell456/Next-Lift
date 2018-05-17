@@ -1,30 +1,29 @@
-div(class="col-sm-6")
-  h3 #{lift.liftname} (#{lift.equip})
+div(class="col-sm-3 lift-card")
+  h4(class="lift-card-header")  #{lift.equip} #{lift.liftname}
+  if(lift.liftdate === null)
+    p(class="no-history-msg") There is no history of this lift, please try for a rep range of 8-12 and log your lift for future suggestions
+  else
+    p #[span Last Lift Date:] #{lift.liftdate}
+    if(status === "suggestion")
+      p #[span Suggested Weight]: #{lift.s_weight}
+      p #[span Suggested Reps]: #{lift.s_rep_count}
+    p #[span Weight Used]: #{lift.maxweight}
+    p #[span Reps Completed]: #{lift.maxreps}
   if(log_privilege === "true")
+    p #[span Primary Muscle]: #{lift.primary_muscle}
+    p #[span Other Muscles Targeted]: #{lift.associated_muscles}
     form(method='get', action='/log')
       input(type="hidden", name="lift_id", value=lift.wkout_id)
       input(type="hidden", name="equip_id", value=lift.equip_id)
-      button(type='submit', class="btn btn-warning") Log a Lift
-      //- TODO functionality to add to workout
-      p Primary Muscle: #{lift.primary_muscle}
-      p Other Muscles Targeted: #{lift.associated_muscles}
-  if(lift.liftdate === null)
-    p There is no history of this lift, please try for a rep range of 8-12 and log your lift for future suggestions
-  else
-    p Last Lift Date: #{lift.liftdate}
-    if(status === "suggestion")
-      p Suggested Weight: #{lift.s_weight}
-      p Suggested Reps: #{lift.s_rep_count}
-    p Weight Used: #{lift.maxweight}
-    p Reps Completed: #{lift.maxreps}
+      button(type='submit', class="btn btn-warning lift-card-btn") Log a Lift
   if(status === "suggestion")
     form(method='get', action='/view-similar')
       input(type="hidden" class="form-control" name="liftName" value=lift.liftname)
-      button(type='submit' class="btn btn-warning") See Similar
+      button(type='submit' class="btn btn-warning lift-card-btn") See Similar
   if(status === "userDash")
     form(method="get" action="/update-entry")
       input(type="hidden" name="user_lift_id" value=`${lift.user_lift_id}`)
-      button(class="btn btn-secondary" type="submit") Edit
+      button(class="btn btn-secondary lift-card-btn" type="submit") Edit
     form(method='post', action='/delete-entry')
       input(type="hidden" class="form-control" name="user_lift_id" value=lift.user_lift_id)
-      button(type='submit' class="btn btn-warning") Delete
+      button(type='submit' class="btn btn-warning lift-card-btn") Delete

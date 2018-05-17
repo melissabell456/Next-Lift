@@ -1,0 +1,33 @@
+.lift-card {
+  background-color: lightgrey;
+  margin: .25em;
+  word-wrap: break-word;
+  padding: 1em;
+  text-align: center;
+}
+
+.lift-card-header{
+  text-align: center;
+}
+
+.lift-card-btn{
+  width: 90%;
+}
+
+/* .filter-btn{
+  display: inline;
+} */
+
+p span {
+  font-weight: bold;
+}
+
+h1 span {
+  font-style: italic;
+  font-weight: lighter;
+}
+
+.no-history-msg {
+  font-size: .75em;
+  font-style: italic;
+}

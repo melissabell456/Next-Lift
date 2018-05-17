@@ -1,8 +1,8 @@
 extends layout
 
 block content
-  a(class="btn btn-primary" href="/next-lift" role="button") Back To Suggested
-  h1 Similar to #{term}
+  a(class="btn btn-warning" href="/next-lift" role="button") Back To Suggested
+  h1 Similar to #[span #{term}]
     div(class="container")
       div(class="row")
         for lift in results
