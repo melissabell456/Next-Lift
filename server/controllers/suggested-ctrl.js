@@ -35,7 +35,6 @@ module.exports.renderView = (req, res, next) => {
             suggestedLift.forEach( lift => {
               liftPosts.push(storeUserSuggestedLift(lift, false, req.user.id))
             })
-            console.log(suggestedLift, "does this include liftdate?");
             res.render('next-suggested', { suggestedLift, status: "suggestion" });
             Promise.all(liftPosts)
             .then( results => {

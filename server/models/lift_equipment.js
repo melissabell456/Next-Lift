@@ -11,9 +11,6 @@ module.exports = (sequelize, DataTypes) => {
     Lift_Equipment.belongsTo(models.Equipment, {
       foreignKey: 'equipment_id'
     });
-    Lift_Equipment.hasMany(models.User_Lift, {
-      foreignKey: "lift_equipment_id"
-    });
   };
   return Lift_Equipment;
 };

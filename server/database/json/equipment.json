@@ -1,22 +1,22 @@
 [
   {
     "id": 1,
-    "name": "dumbbell"
+    "name": "Dumbbell"
   },
   {
     "id": 2,
-    "name": "barbell"
+    "name": "Barbell"
   },
   {
     "id": 3,
-    "name": "kettlebell"
+    "name": "Kettlebell"
   },
   {
     "id": 4,
-    "name": "bodyweight"
+    "name": "Bodyweight"
   },
   {
     "id": 5,
-    "name": "cable"
+    "name": "Cable"
   }
 ]

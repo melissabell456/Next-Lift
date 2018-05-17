@@ -63,8 +63,8 @@ const removeFromSuggested = ({ lift_id, user_id, equip_id }) => {
 module.exports.recordLift = (req, res, next) => {
   return new Promise( (resolve, reject) => {
     sequelize.query(
-      `INSERT INTO user_lift (id, lift_id, lift_equipment_id, user_id, equipment_id, weight, rep_count, "createdAt", "updatedAt")
-      VALUES (DEFAULT, ${req.body.lift_id}, DEFAULT, ${req.user.id}, ${req.body.equipment_id}, ${req.body.weight}, ${req.body.rep_count}, (('${req.body.createdAt}') AT TIME ZONE 'UTC'), now())`
+      `INSERT INTO user_lift (id, lift_id, user_id, equipment_id, weight, rep_count, "createdAt", "updatedAt")
+      VALUES (DEFAULT, ${req.body.lift_id}, ${req.user.id}, ${req.body.equipment_id}, ${req.body.weight}, ${req.body.rep_count}, (('${req.body.createdAt}') AT TIME ZONE 'UTC'), now())`
     ).spread( (results, metadata) => {
       console.log(results, "added?");
       resolve(results);
@@ -112,11 +112,10 @@ module.exports.parseSuggestedFormEntry = (req, res, next) => {
 
 const recordSuggestedLift = ( { lift_id, user_id, equip_id, weight, rep_count, createdAt } ) => {
   sequelize.query(
-    `INSERT INTO user_lift (id, lift_id, lift_equipment_id, user_id, equipment_id, weight, rep_count, "createdAt", "updatedAt")
-    VALUES (DEFAULT, ${lift_id}, DEFAULT, ${user_id}, ${equip_id}, ${weight}, ${rep_count}, (('${createdAt}') AT TIME ZONE 'UTC'), current_date)`
+    `INSERT INTO user_lift (id, lift_id, user_id, equipment_id, weight, rep_count, "createdAt", "updatedAt")
+    VALUES (DEFAULT, ${lift_id}, ${user_id}, ${equip_id}, ${weight}, ${rep_count}, (('${createdAt}') AT TIME ZONE 'UTC'), current_date)`
   ).spread( (results, metadata) => {
-    // TODO give feedback, redirect user
+    res.redirect('/dashboard');
     return results;
-    // console.log(metadata);
   })
 }

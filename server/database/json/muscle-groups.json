@@ -1,74 +1,74 @@
 [
   {
     "id": 1,
-    "name": "calves"
+    "name": "Calves"
   },
   {
     "id": 2,
-    "name": "quadriceps"
+    "name": "Quadriceps"
   },
   {
     "id": 3,
-    "name": "hamstrings"
+    "name": "Hamstrings"
   },
   {
     "id": 4,
-    "name": "adductor"
+    "name": "Adductor"
   },
   {
     "id": 5,
-    "name": "abductor"
+    "name": "Abductor"
   },
   {
     "id": 6,
-    "name": "glutes"
+    "name": "Glutes"
   },
   {
     "id": 7,
-    "name": "lower back"
+    "name": "Lower back"
   },
   {
     "id": 8,
-    "name": "obliques"
+    "name": "Obliques"
   },
   {
     "id": 9,
-    "name": "abs"
+    "name": "Abs"
   },
   {
     "id": 10,
-    "name": "latissimus dorsi"
+    "name": "Latissimus dorsi"
   },
   {
     "id": 11,
-    "name": "anterior deltoid"
+    "name": "Anterior Deltoid"
   },
   {
     "id": 12,
-    "name": "posterior deltoid"
+    "name": "Posterior Deltoid"
   },
   {
     "id": 13,
-    "name": "trapezius"
+    "name": "Trapezius"
   },
   {
     "id": 14,
-    "name": "bicep"
+    "name": "Bicep"
   },
   {
     "id": 15,
-    "name": "tricep"
+    "name": "Tricep"
   },
   {
     "id": 16,
-    "name": "pectoralis"
+    "name": "Pectoralis"
   },
   {
     "id": 17,
-    "name": "lateral deltoid"
+    "name": "Lateral Deltoid"
   },
   {
     "id": 18,
-    "name": "forearm"
+    "name": "Forearm"
   }
 ]

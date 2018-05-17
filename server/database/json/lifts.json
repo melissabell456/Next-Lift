@@ -8,7 +8,7 @@
   },
   {
     "id": 2,
-    "name": "deadlift",
+    "name": "Deadlift",
     "motion": "Pull",
     "type": "compound",
     "region": "lower"
@@ -22,7 +22,7 @@
   },
   {
     "id": 4,
-    "name": "Cable Kick-backs",
+    "name": "Glute Kick-backs",
     "motion": "Pull",
     "type": "isolation",
     "region": "lower"
@@ -71,70 +71,70 @@
   },
   {
     "id": 11,
-    "name": "upright row",
+    "name": "Upright Row",
     "motion": "Pull",
     "type": "compound",
     "region": "upper"
   },
   {
     "id": 12,
-    "name": "front raise",
+    "name": "Front Raise",
     "motion": "Push",
     "type": "isolation",
     "region": "upper"
   },
   {
     "id": 13,
-    "name": "rear delt flys",
+    "name": "Rear Delt Flys",
     "motion": "Pull",
     "type": "isolation",
     "region": "upper"
   },
   {
     "id": 14,
-    "name": "curl",
+    "name": "Curl",
     "motion": "Pull",
     "type": "isolation",
     "region": "upper"
   },
   {
     "id": 15,
-    "name": "hammer curl",
+    "name": "Hammer Curl",
     "motion": "Pull",
     "type": "isolation",
     "region": "upper"
   },
   {
     "id": 16,
-    "name": "preacher curl",
+    "name": "Preacher Curl",
     "motion": "Pull",
     "type": "isolation",
     "region": "upper"
   },
   {
     "id": 17,
-    "name": "pull down",
+    "name": "Pull Down",
     "motion": "Pull",
     "type": "compound",
     "region": "upper"
   },
   {
     "id": 18,
-    "name": "underhand pull down",
+    "name": "Underhand Pull Down",
     "motion": "Pull",
     "type": "compound",
     "region": "upper"
   },
   {
     "id": 19,
-    "name": "row",
+    "name": "Row",
     "motion": "Pull",
     "type": "compound",
     "region": "upper"
   },
   {
     "id": 20,
-    "name": "straight armed pull down",
+    "name": "Straight Armed Pull Down",
     "motion": "Pull",
     "type": "isolation",
     "region": "upper"
@@ -148,7 +148,7 @@
   },
   {
     "id": 22,
-    "name": "Front squat",
+    "name": "Front Squat",
     "motion": "Push",
     "type": "compound",
     "region": "lower"
@@ -190,28 +190,28 @@
   },
   {
     "id": 28,
-    "name": "Push up",
+    "name": "Push Up",
     "motion": "Push",
     "type": "compound",
     "region": "upper"
   },
   {
     "id": 29,
-    "name": "Chest fly",
+    "name": "Chest Fly",
     "motion": "Push",
     "type": "isolation",
     "region": "upper"
   },
   {
     "id": 30,
-    "name": "Wide grip bench press",
+    "name": "Wide Grip Bench Press",
     "motion": "Push",
     "type": "isolation",
     "region": "upper"
   },
   {
     "id": 31,
-    "name": "Seated tricep extension",
+    "name": "Seated Tricep Extension",
     "motion": "Push",
     "type": "isolation",
     "region": "upper"
@@ -225,7 +225,7 @@
   },
   {
     "id": 33,
-    "name": "plank",
+    "name": "Plank",
     "motion": "Push",
     "type": "compound",
     "region": "upper"
