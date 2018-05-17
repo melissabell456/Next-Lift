@@ -412,12 +412,12 @@
   {
     "lift_id": 19,
     "muscle_id": 14,
-    "primary": "TRUE"
+    "primary": "FALSE"
   },
   {
     "lift_id": 19,
     "muscle_id": 17,
-    "primary": "TRUE"
+    "primary": "FALSE"
   },
   {
     "lift_id": 20,

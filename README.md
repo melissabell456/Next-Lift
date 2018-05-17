@@ -94,6 +94,19 @@ JOIN lifts l ON l.id = lm.lift_id
 GROUP BY associated_lift, lift_m_id 
 ```
 
+```
+CREATE VIEW lift_primary_muscle
+AS
+SELECT 
+  l.name AS associated_lift, 
+  l.id AS lift_m_id, 
+  m.name AS primary_muscle
+FROM muscles m
+JOIN lift_muscle lm ON lm.muscle_id = m.id
+JOIN lifts l ON l.id = lm.lift_id
+WHERE lm.primary = true
+```
+
 ## API Endpoints
 
 1. Use ```search``` route for filtering lift db: 
