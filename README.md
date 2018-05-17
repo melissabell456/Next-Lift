@@ -1,18 +1,18 @@
-# tr-obot
+# Next-Lift
 
-## What is tr-obot?
+## What is Next-Lift?
 
-#### tr-obot is a web app that predicts/suggests workouts for a specific user including weight and rep-range for each lift.
+#### Next-Lift is a web app that suggests workouts for a specific user including weight and rep-range for each lift.
 
-## How does tr-obot know what to suggest for me?
+## How does Next-Lift know what to suggest for me?
 
-#### tr-obot uses a standard weight lifting split/rep range and suggests workouts based on a user's previously logged workouts.
+#### Next-Lift uses a standard weight lifting split/rep range and suggests workouts based on a user's previously logged workouts. The mosre Next-Lift gets to know you, the better the suggestions.
 
-## Why tr-obot?
+## Why Next-Lift?
 
-#### Many apps and websites suggest workouts/rep-ranges/weight based on what the 'average' person can do. What is average? Who defined that and how does it apply to an individual? These recommendations can cause injuries (if the suggested rep-range/weight is too much for the user) or a lack of progress(if the suggested rep-range/weight is too low for the user) which ultimately leads to feelings of discourgement and inadequacy. Because tr-obot only suggests workouts based on the current user, these custom work out plans will ensure progress and help to avoid injuries.
+#### Many apps and websites suggest workouts/rep-ranges/weight based on what the 'average' person can do. What is average? Who defined that and how does it apply to an individual? These recommendations can cause injuries (if the suggested rep-range/weight is too much for the user) or a lack of progress(if the suggested rep-range/weight is too low for the user) which ultimately leads to feelings of discourgement and inadequacy. Because Next-Lift only suggests workouts based on the current user, these custom work out plans will ensure progress and help to avoid injuries.
 
-## To run tr-obot
+## To run Next-Lift
 
 1. Clone and pull down repository
 1. Run npm install
