@@ -106,6 +106,7 @@ module.exports.parseSuggestedFormEntry = (req, res, next) => {
     Promise.all(removeSuggestedRecords)
     .then( results => {
       console.log("deleted", results);
+      res.redirect('/dashboard');
     })
   })
 }
@@ -115,7 +116,6 @@ const recordSuggestedLift = ( { lift_id, user_id, equip_id, weight, rep_count, c
     `INSERT INTO user_lift (id, lift_id, user_id, equipment_id, weight, rep_count, "createdAt", "updatedAt")
     VALUES (DEFAULT, ${lift_id}, ${user_id}, ${equip_id}, ${weight}, ${rep_count}, (('${createdAt}') AT TIME ZONE 'UTC'), current_date)`
   ).spread( (results, metadata) => {
-    res.redirect('/dashboard');
     return results;
   })
 }

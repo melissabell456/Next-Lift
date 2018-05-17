@@ -5,7 +5,7 @@ div(class="col-sm-6")
       input(type="hidden", name="lift_id", value=lift.wkout_id)
       input(type="hidden", name="equip_id", value=lift.equip_id)
       button(type='submit', class="btn btn-warning") Log a Lift
-      //- button Add To Workout
+      //- TODO functionality to add to workout
 
   if(lift.liftdate === null)
     p There is no history of this lift, please try for a rep range of 8-12 and log your lift for future suggestions
@@ -16,11 +16,14 @@ div(class="col-sm-6")
       p Suggested Reps: #{lift.s_rep_count}
     p Weight Used: #{lift.maxweight}
     p Reps Completed: #{lift.maxreps}
-    if(status === "userDash")
-      form(method="get" action="/update-entry")
-        input(type="hidden" name="user_lift_id" value=`${lift.user_lift_id}`)
-        button(class="btn btn-secondary" type="submit") Edit
-      form(method='post', action='/delete-entry')
-        input(type="hidden" class="form-control" name="user_lift_id" value=lift.user_lift_id)
-        button(type='submit' class="btn btn-warning") Delete
-//- TODO: provide a link to similar lifts for reference where to start weight/rep wise
+  if(status === "suggestion")
+    form(method='get', action='/view-similar')
+      input(type="hidden" class="form-control" name="liftName" value=lift.liftname)
+      button(type='submit' class="btn btn-warning") See Similar
+  if(status === "userDash")
+    form(method="get" action="/update-entry")
+      input(type="hidden" name="user_lift_id" value=`${lift.user_lift_id}`)
+      button(class="btn btn-secondary" type="submit") Edit
+    form(method='post', action='/delete-entry')
+      input(type="hidden" class="form-control" name="user_lift_id" value=lift.user_lift_id)
+      button(type='submit' class="btn btn-warning") Delete

@@ -1,0 +1,9 @@
+extends layout
+
+block content
+  a(class="btn btn-primary" href="/next-lift" role="button") Back To Suggested
+  h1 Similar to #{term}
+    div(class="container")
+      div(class="row")
+        for lift in results
+          include partials/lift-card

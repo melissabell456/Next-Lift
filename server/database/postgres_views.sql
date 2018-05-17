@@ -90,7 +90,18 @@ SELECT user_id, MAX(to_char("createdAt", 'MM-DD-YYYY')) as latestLift
 FROM user_lift
 GROUP BY user_id
 
-SELECT * FROM user_log
-SELECT * FROM lift_and_equipment_combos
--- DROP VIEW user_log
--- DROP VIEW lift_and_equipment_combos
+CREATE VIEW lift_muscle_associations
+AS
+SELECT l.name as associated_lift, l.id as lift_m_id, array_agg(m.name) as associated_muscles
+FROM muscles m
+JOIN lift_muscle lm ON lm.muscle_id = m.id
+JOIN lifts l ON l.id = lm.lift_id
+GROUP BY associated_lift, lift_m_id 
+
+CREATE VIEW lift_primary_muscle
+AS
+SELECT l.name as associated_lift, l.id as lift_m_id, m.name as primary_muscle
+FROM muscles m
+JOIN lift_muscle lm ON lm.muscle_id = m.id
+JOIN lifts l ON l.id = lm.lift_id
+WHERE lm.primary = true
